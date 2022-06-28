@@ -1,0 +1,209 @@
+\documentclass[12pt]{beamer}
+
+%PTBR
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{appendixnumberbeamer} %frames sem número
+
+    
+\usepackage{amssymb, wasysym}
+\usepackage{amsmath}
+\usepackage{turnstile}% http://ctan.org/pkg/turnstile
+\usepackage{tikz}% http://ctan.org/pkg/pgf
+\usepackage{adjustbox}% http://ctan.org/pkg/adjustbox
+\usepackage{proof}
+\usepackage{pgfgantt}
+
+\newcommand\sqsubsetap{\mathrel{\substack{
+  \textstyle\sqsubset\\[-0.2ex]\textstyle\sim}}}
+\renewcommand{\makehor}[4]
+  {\ifthenelse{\equal{#1}{n}}{\hspace{#3}}{}
+   \ifthenelse{\equal{#1}{s}}{\rule[-0.5#2]{#3}{#2}}{}
+   \ifthenelse{\equal{#1}{d}}{\setlength{\lengthvar}{#2}
+     \addtolength{\lengthvar}{0.5#4}
+     \rule[-\lengthvar]{#3}{#2}
+     \hspace{-#3}
+     \rule[0.5#4]{#3}{#2}}{}
+   \ifthenelse{\equal{#1}{t}}{\setlength{\lengthvar}{1.5#2}
+     \addtolength{\lengthvar}{#4}
+     \rule[-\lengthvar]{#3}{#2}
+     \hspace{-#3}
+     \rule[-0.5#2]{#3}{#2}
+     \hspace{-#3}
+     \setlength{\lengthvar}{0.5#2}
+     \addtolength{\lengthvar}{#4}
+     \rule[\lengthvar]{#3}{#2}}{}
+   \ifthenelse{\equal{#1}{w}}{% New wavy $\sim$ definition
+     \setbox0=\hbox{$\sim$}%
+     \raisebox{-.6ex}{\hspace*{-.05ex}\adjustbox{width=#3,height=\height}{\clipbox{0.75 0 0 0}{\usebox0}}}}{}
+   \ifthenelse{\equal{#1}{z}}{% New tikz wavy definition
+     \raisebox{-.4ex}{\hspace*{-.08ex}\tikz \draw [thin,x=0.5ex,y=.25ex] (0,0) sin (1,1) cos (2,0) sin (3,-1) cos (4,0);\hspace*{.2ex}}}{}   
+  }
+
+
+%Meus comandos para letras de KB
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\B}{\mathfrak{B}}
+\newcommand{\dvd}{\turnstile{s}{w}{}{}{}}
+\newcommand{\redkb}{\langle\overset{\sim}{\T},\overset{\sim}{\Delta}\rangle}
+\newcommand{\dkb}{\langle\T,\B\rangle}
+
+\newcommand{\definc}{\mathrel{\substack{
+\textstyle\sqsubset\\[-0.2ex]\textstyle\sim}}}
+
+\newcommand*{\defvdash}{~\mid\!\sim} %defvdash
+
+%newcommand*{\defvdash}{\ensuremath{\mathrel{\medvert\mskip-5.7mu\clipbox{1 0 0 0}{$~\mid\!\sim$}}}} %defvdash
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\title{Topics in Description Logics of Typicality and Quantification Neglect}
+\date{15 de Dezembro de 2020}
+%\date{26 de Março de 2019}
+\author{Candidato: Igor de Camargo e Souza Câmara \\
+Orientadora: Profa. Dra. Renata Wassermann}
+\institute{IME - USP}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+
+\begin{document}
+
+%\maketitle
+
+\appendix %sem numeração
+
+\begin{frame}
+\frametitle{Typicality and Description Logics}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+   ~\\
+   { 
+   \footnotesize \textbf{Typicality}: phenomenon of human cognition. %well-studied phenomenon of human cognition.
+\begin{itemize}
+    \itemsep-0.3em 
+    \item “Birds (typically) fly.”
+    \item Relates to non-monotonicity.
+    \item \textit{x} is a bird implies \textit{x} flies. \textit{x} is also a penguin, therefore \textit{x} does not fly.
+\end{itemize}
+
+\textbf{A Survey of DLs of Typicality}
+
+%230 papers, 231 authors.
+%\textbf{Goals}: 
+\begin{itemize}
+    \itemsep-0.3em 
+    \item Identify the main tendencies and pinpoint open-problems.
+    \item Representing typicality (language level).
+    \item Adapting DL’s semantics.
+    \item Reasoning techniques dealing with typical information.
+\end{itemize}
+}
+\end{column}
+
+\begin{column}{0.55\textwidth}  %%<--- here
+%\begin{center}
+    
+{\footnotesize 
+    
+\textbf{3 main “schools”}
+\vspace{-0.7em}
+\begin{itemize}
+    \itemsep-0.3em
+    \item DLs with modal-like typicality operators. %\textit{\textbf{T}(Penguin)} denotes typical penguins.
+    \item Defeasible DLs. %$Bird \definc Fly$ means that birds usually fly.
+    \item DL + Rules.
+\end{itemize}
+
+\vspace{-0.7em}
+\textbf{Semantics} equipped with preference relations.
+
+\textbf{Reasoning techniques}
+\vspace{-0.7em}
+\begin{itemize}
+    \itemsep-0.3em
+    \item Tableaux. %that record preferential relations.
+    \item Materialisation and closures.
+\end{itemize}
+
+\textbf{Some problems}:
+Inheritance blocking.
+Context and single preference orderings.
+\underline{Quantification neglect}.
+}
+    
+%\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Quantification Neglect and Typicality Models}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+
+{\footnotesize 
+\textbf{Quantification neglect}
+\vspace{-0.7em}
+\begin{itemize}
+    \itemsep-0.3em
+    \item Reasoning procedures of propositional nature.
+    \item $Bird(x)$ implies $Fly(x)$
+    \item $\exists eats.Bird$ does not imply $\exists eats.Fly$.
+\end{itemize}
+
+\textbf{Typicality Models}
+\vspace{-0.7em}
+\begin{itemize}
+    \itemsep-0.3em
+    \item Canonical model construction for defeasible $\mathcal{EL}_\bot$.
+    \item Domain elements: $(C, \mathcal{U})$, where $C$ is a concept and $\mathcal{U} \sqsubseteq \mathcal{D}$.
+    %\item Reasoning procedures (\textit{e.g.} rational), individuals introduced by existential quantification are of the form: $(C, \emptyset)$.
+    %\item Procedures to upgrade these individuals.
+    \item Individuals introduced by existential quantification are atypical. Typicality models provide tools to upgrade them. %amend that by upgrading the defeasible information conveyed by them.
+\end{itemize}
+
+}
+\end{column}
+
+\begin{column}{0.55\textwidth}  %%<--- here
+    %\begin{center}
+    
+{\footnotesize 
+    \textbf{My goals}
+    \vspace{-0.7em}
+    \begin{itemize}
+        \item Port typicality models to more expressive defeasible DLs.
+        \item Investigate it for DLs with the \textit{canonical model property}. 
+    \end{itemize}
+    
+    \textbf{Current challenges}
+    \vspace{-0.7em}
+    \begin{itemize}
+        \item Construction relies on operations not necessarily available to all canonical models.
+        \item \textbf{Subgoal}: find suitable canonical model constructions to classes of more expressive DLs.
+    \end{itemize}
+}
+    
+%\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\end{document}
+
+
+
+
