@@ -1,0 +1,23 @@
+\frametitle{Challenge 1}
+
+\begin{center}
+  $\Tmc = \{D \sqcap \exists r.D \sqsubseteq \bot \}$
+\end{center}
+
+\pause
+
+(\textbf{Solution no. 1} -- Apply $C \definc D$ to $a$)
+
+\begin{center}
+  \includegraphics[scale=0.35]{img/challenge1_2.png}
+\end{center}
+
+\pause
+\vspace{0.2cm}
+
+(\textbf{Solution no. 2} -- Apply $C \definc D$ to $b$)
+
+\begin{center}
+  \includegraphics[scale=0.35]{img/challenge1_3.png}
+\end{center}
+

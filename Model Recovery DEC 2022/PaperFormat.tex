@@ -1,0 +1,326 @@
+%\documentclass{article}
+\documentclass[draft]{article}
+
+
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[small]{caption}
+\usepackage[final]{graphicx} %[final] to overrite 'draft', inherited by graphicx, which prevents displaying images
+\graphicspath{{diagrams/}}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage{booktabs}
+\usepackage{bm} %bols math symbols
+\urlstyle{same}
+\usepackage{amssymb}
+\usepackage{xspace}
+\usepackage{csquotes}
+\usepackage{tikz}
+\usetikzlibrary{shapes.misc, positioning}
+\usepackage[obeyDraft]{todonotes}
+\usepackage{enumitem}
+
+\bibliographystyle{alpha}
+
+\usepackage{bussproofs}
+\usepackage{Macros}
+
+\newtheorem{definition}{Definition}
+\newtheorem{example}[definition]{Example}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+
+% % % % % % % % % % % % % % % % % % % % % % % % %
+
+\title{On Model Recovery for Typicality Interpretations}
+\author{Igor de Camargo e Souza Câmara}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+We lay out two different definitions for \emph{model recovery}: one is \emph{semantical} and the other is procedural.
+Then, we show their equivalence.\todo{The last semantical condition, minimality, needs an additional membership pruning step.}
+
+\section{Semantical}
+
+
+For an upgraded typicality interpretation $\Imc$, a recovered (typicality) model $\Jmc$ has to conform to the following properties:
+
+\begin{enumerate}
+  \item It must be a model of $\Kmc$ (satisfaction \wrt typicality models), 
+  \item It should be an enlargement (\wrt concept membership) of $\Imc$, 
+  \item It should have the \emph{pre canonical} property, \ie, every maximal edge required by the KB should be represented in the model, and every edge of the model must be maximal \wrt the KB. 
+  \begin{itemize}
+    \item This should conform to the edges in $\Imc$ -- new edges landing $(N, \Umc)$ should be improvements of $(N', \Umc)$ -- the second dimension is kept intact.  
+    \item We only deal with the level of typicality of neighbors during the upgrade step, not during the recovery. 
+  \end{itemize}
+  \item It should be the (one of the) smallest model(s) to satisfy the properties. 
+  \begin{itemize}
+    \item This should prevent spurious, non-necessary membership. 
+  \end{itemize}
+\end{enumerate}
+
+Let's examine each one of them formally:
+
+
+(1) It must be a model of $\Kmc$ (satisfaction \wrt typicality models), corresponds formally to 
+\begin{equation*}
+  \Jmc \models \Kmc
+\end{equation*}
+
+(2) It should be an enlargement (\wrt concept membership) of $\Imc$. Formally we say:
+\begin{equation*}
+  \Ntype{e}{\Imc} \subseteq \Ntype{e}{\Jmc} \text{for every } e \in \Delta^{\Imc}
+\end{equation*}
+
+(3) It should have the \emph{pre canonical} property, \ie, {\color{red}every maximal edge required by the KB should be represented in the model}, and every edge of the model must be maximal \wrt the KB. Formally we say:
+
+  \begin{align*}
+    \text{If } \Tmc^{\Dmc} \models & \setconj{\Ntype{\typel{M}{\Umc}}{\Jmc}} \sqcap \ELmaterialization{\Umc}  \sqsubseteq \exists r.\setconj{N} \text{ for a maximal } N \text{, then } \\ 
+    & \text{(a) } (\typel{M}{\Umc}, \typel{N}{\Umc'} ) \in r^{\Jmc} \text{ } \forall \typel{N}{\Umc'} \textit{s.t. } \exists N'\subseteq N. (\typel{M}{\Umc}, \typel{N'}{\Umc'}) \in r^{\Imc} \text{, and}\\ 
+    & \text{(b) }(\typel{M}{\Umc}, \typel{N}{\emptyset}) \in r^{\Jmc}
+  \end{align*}
+
+  (3) It should have the \emph{pre canonical} property, \ie, every maximal edge required by the KB should be represented in the model, and {\color{red} every edge of the model must be maximal \wrt the KB}. Formally we say:
+
+  \begin{align*}
+    \text{If }&(\typel{M}{\Umc}, \typel{N}{\Umc'}) \in r^{\Imc}  \text{, then} \\
+    & \Tmc^{\Dmc} \models \Ntype{\typel{M}{\Umc}}{\Jmc} \sqcap \ELmaterialization{\Umc} \sqsubseteq \exists r.\setconj{N} \text{ for a maximal } M \text{, and} \\
+    & \exists N' \sqsubseteq N \textit{ s.t. } (\typel{M}{\Umc}, \typel{N'}{\Umc'}) \in r^{\Imc} \text{ or } \\
+    & \Umc' = \emptyset 
+  \end{align*}
+
+  (4) It should be the (one of the) smallest model(s) to satisfy the properties. Formally we say: 
+  \begin{align*}
+    \nexists \Jmc' = (\Delta^{\Imc}, \cdot^{\Imc}) \textit{ s.t. } \\
+    r^{\Jmc'} = r^{\Jmc} \text{ and } \\ 
+    \forall e \in \Delta^{\Imc}.\Ntype{e}{\Jmc'} \subseteq \Ntype{e}{\Jmc}
+  \end{align*}
+
+Taken everything together, the definition is:
+
+\begin{definition}{Model Recovery (Semantical)}
+  \label{def:model_recovery}
+
+   Let $\Imc = (\Delta^{\Imc}, \cdot^{\Imc})$ be an upgraded typicality interpretation from the DKB $\Kmc$.
+   Then, $\Jmc = (\Delta^{\Imc}, \cdot^{\Imc})$ is a model recovery of $\Imc$ iff it satisfies the following properties:
+
+   \begin{enumerate}
+    \item  $\Jmc \models \Kmc$
+    \item $\Ntype{e}{\Imc} \subseteq \Ntype{e}{\Jmc} \text{ for every } e \in \Delta^{\Imc}$
+    \item If $\Tmc^{\Dmc} \models  \setconj{\Ntype{\typel{M}{\Umc}}{\Jmc}} \sqcap \ELmaterialization{\Umc}  \sqsubseteq \exists r.\setconj{N}$ for a maximal $N$, then  
+        \begin{enumerate} 
+            \item $(\typel{M}{\Umc}, \typel{N}{\Umc'} ) \in r^{\Jmc} \text{ } \forall \typel{N}{\Umc'} \textit{s.t. } \exists N'\subseteq N. (\typel{M}{\Umc}, \typel{N'}{\Umc'}) \in r^{\Imc}$, and 
+            \item $(\typel{M}{\Umc}, \typel{N}{\emptyset}) \in r^{\Jmc}$
+      \end{enumerate}
+    \item If $(\typel{M}{\Umc}, \typel{N}{\Umc'}) \in r^{\Imc}$, then $\Tmc^{\Dmc} \models \Ntype{\typel{M}{\Umc}}{\Jmc} \sqcap \ELmaterialization{\Umc} \sqsubseteq \exists r.\setconj{N}$ for a maximal $M$, and
+        \begin{enumerate}
+            \item $\exists N' \sqsubseteq N \textit{ s.t. } (\typel{M}{\Umc}, \typel{N'}{\Umc'}) \in r^{\Imc} \text{ or }$ 
+            \item $\Umc' = \emptyset$
+        \end{enumerate} 
+    \item  $\nexists \Jmc' = (\Delta^{\Imc}, \cdot^{\Imc})$ s.t. $r^{\Jmc'} = r^{\Jmc}$ and $\forall e \in \Delta^{\Imc}.\Ntype{e}{\Jmc'} \subseteq \Ntype{e}{\Jmc}$
+\end{enumerate}
+
+{\color{red} \textbf{Observation}: both $(3)$ and $(4)$ have symmetrical counterparts to account for inverted roles, $r^{-}$. The inner workings of these properties is exactly the same.}
+
+\end{definition}
+
+\section{Procedural}
+
+The idea of the procedural definition is to define a set of rules triggered by violations whose application transforms $\Imc$ into (one of the existing) model recovery $\Jmc$.
+
+\begin{definition}{Recovery Rules}
+\label{def:recovery_rules}
+
+%Rule 1
+\begin{prooftree}
+  \LeftLabel{$(\sqsubseteq_1)$}
+  \AxiomC{$A \sqsubseteq B \in \Tmc$}
+  \AxiomC{$\typel{M}{\Umc} \in A^{\Imc}$}
+  \AxiomC{$\typel{M}{\Umc} \not\in B^{\Imc}$}
+  \TrinaryInfC{Add $\typel{M}{\Umc}$ to $B^{\Imc}$}
+\end{prooftree}
+
+%Rule 2
+\begin{prooftree}
+  \LeftLabel{$(\sqsubseteq_2)$}
+  \AxiomC{$A_1 \sqcap A_2 \sqsubseteq B \in \Tmc$}
+  \AxiomC{$\typel{M}{\Umc} \in A_1^{\Imc}$ and $\typel{M}{\Umc} \in A_2^{\Imc}$}
+  \AxiomC{$\typel{M}{\Umc} \not\in B^{\Imc}$}
+  \TrinaryInfC{Add $\typel{M}{\Umc}$ to $B^{\Imc}$}
+\end{prooftree}
+
+%Rule 3a
+\begin{prooftree}
+  \LeftLabel{$(\exists r)$}
+  \AxiomC{$A \sqsubseteq \exists r.B \in \Tmc$}
+  \AxiomC{\parbox{4cm}{$\typel{M}{\Umc} \in A^{\Imc}$ and $\nexists N \supseteq \{B\}$ s.t. $(\typel{M}{\Umc}, \typel{N}{\Umc'}) \in r^{\Imc}_{\textbf{p}}$}}
+  \BinaryInfC{\parbox{9cm}{Add $(\typel{M}{\Umc}, \typel{N}{\emptyset}) \in r^{\Imc}_{\textbf{p}}$ for every $N \supseteq \{B\}$ s.t. $\Tmc^{\Dmc} \models \setconj{\Ntype{\typel{M}{\Umc}}{\Imc}} \sqcap \ELmaterialization{\Umc} \sqsubseteq \exists r.\setconj{N}$ and $N$ is maximal}}
+\end{prooftree}
+
+%Rule 3a
+\begin{prooftree}
+  \LeftLabel{$(\exists r^{-})$}
+  \AxiomC{$A \sqsubseteq \exists r^{-}.B \in \Tmc$}
+  \AxiomC{\parbox{4cm}{$\typel{M}{\Umc} \in A^{\Imc}$ and $\nexists N \supseteq \{B\}$ s.t. $(\typel{N}{\Umc'}, \typel{M}{\Umc}) \in r^{\Imc}_{\textbf{s}}$}}
+  \BinaryInfC{\parbox{9cm}{Add $(\typel{N}{\emptyset}, \typel{M}{\Umc}) \in r^{\Imc}_{\textbf{s}}$ for every $N \supseteq \{B\}$ s.t. $\Tmc^{\Dmc} \models \setconj{\Ntype{\typel{M}{\Umc}}{\Imc}} \sqcap \ELmaterialization{\Umc} \sqsubseteq \exists r^{-}.\setconj{N}$ and $N$ is maximal}}
+\end{prooftree}
+
+%Rule 4a
+\begin{prooftree}
+  \LeftLabel{$(\forall_1 r)$}
+  \AxiomC{$A \sqsubseteq \forall r.B \in \Tmc$}
+  \AxiomC{$\typel{M}{\Umc} \in A^{\Imc}$}
+  \AxiomC{\parbox{4.5cm}{$(\typel{M}{\Umc}, \typel{N}{\Umc'}) \in r^{\Imc}_{\textbf{p}}$ and $B\not\in N$}}
+  \TrinaryInfC{\parbox{9cm}{(i) remove $(\typel{M}{\Umc}, \typel{N}{\Umc'})$ from $r^{\Imc}_{\textbf{p}}$ and (ii) add $(\typel{M}{\Umc}, \typel{N \cup \{B\}}{\Umc'})$ to $r^{\Imc}_{\textbf{p}}$}}
+\end{prooftree}
+
+%Rule 4b
+\begin{prooftree}
+  \LeftLabel{$(\forall_1 r^{-})$}
+  \AxiomC{$A \sqsubseteq \forall r^{-}.B \in \Tmc$}
+  \AxiomC{$\typel{N}{\Umc'} \in A^{\Imc}$}
+  \AxiomC{\parbox{4.5cm}{$(\typel{M}{\Umc}, \typel{N}{\Umc'}) \in r^{\Imc}_{\textbf{s}}$ and $B\not\in M$}}
+  \TrinaryInfC{\parbox{9cm}{(i) remove $(\typel{M}{\Umc}, \typel{N}{\Umc'})$ from $r^{\Imc}_{\textbf{s}}$ and (ii) add $(\typel{M \cup \{B\}}{\Umc}, \typel{N}{\Umc})$ to $r^{\Imc}_{\textbf{s}}$}}
+\end{prooftree}
+
+%Rule 5a
+\begin{prooftree}
+  \LeftLabel{$(\forall_2 r)$}
+  \AxiomC{$A \sqsubseteq \forall r.B \in \Tmc$}
+  \AxiomC{$\typel{M}{\Umc} \in A^{\Imc}$}
+  \AxiomC{\parbox{5cm}{$(\typel{M}{\Umc}, \typel{N}{\Umc'}) \in r^{\Imc}_{\textbf{s}}$ and $\typel{N}{\Umc'} \not \in B^{\Imc}$}}
+  \TrinaryInfC{Add $\typel{N}{\Umc'}$ to $B^{\Imc}$}
+\end{prooftree}
+
+%Rule 5b
+\begin{prooftree}
+  \LeftLabel{$(\forall_2 r^{-})$}
+  \AxiomC{$A \sqsubseteq \forall r^{-}.B \in \Tmc$}
+  \AxiomC{$\typel{N}{\Umc'} \in A^{\Imc}$}
+  \AxiomC{\parbox{5cm}{$(\typel{M}{\Umc}, \typel{N}{\Umc'}) \in r^{\Imc}_{\textbf{p}}$ and $\typel{M}{\Umc} \not \in B^{\Imc}$}}
+  \TrinaryInfC{Add $\typel{M}{\Umc}$ to $B^{\Imc}$}
+\end{prooftree}
+
+%Rule \Bot 
+\begin{prooftree}
+  \LeftLabel{$(\bot)$}
+  \AxiomC{$A \sqsubseteq \bot \in \Tmc$}
+  \AxiomC{$\typel{M}{\Umc} \in A_1^{\Imc}$}
+  \BinaryInfC{Return $\emptyset$}
+\end{prooftree}
+
+\end{definition}
+
+\begin{definition}{Recovery Path}
+  Let $\Imc$ be an upgraded typicality model.
+  Then, $\Imc = \Imc_0, \Imc_1, \dots, \Imc_k$ is a recovery path iff 
+  \begin{enumerate}
+    \item Each $\Imc_{i+1}$ is obtained by the application of one recovery rule (except $\bot$) to $\Imc_i$.
+    \item $\Imc_k$ has no violations. 
+  \end{enumerate}
+  
+\end{definition}
+
+\begin{lemma}
+  Any axiom violation is covered by the pre-conditions from Definition \ref{def:recovery_rules}.
+\end{lemma}
+
+\begin{proof}
+  (Sketch)
+
+  The TBox is normalized. Rules $\sqsubseteq_{\{1,2\}}$ cover axioms of the following forms: $A \sqsubseteq B$ and $A_1 \sqcap A_2 \sqsubseteq B$.
+
+  Axioms of the form $A \sqsubseteq \exists r.B$ are covered by the stronger conditions of $\exists r$. 
+  Notice that if $\typel{M}{\Umc} \not \in (\exists r.B)$, there can be no $N$ s.t. $B \in N$ and $(\typel{M}{\Umc}, \typel{N}{\Umc'})$, given that this element would belong to $B^{\Imc}$.
+
+  Finally, violations of the axioms $A \sqsubseteq \forall r.B$ are covered by the axioms $\forall_{\{1, 2\}}$.
+  There are four axioms because there are two binary variables: if the role is normal or inverted, and if the owner of the edge is the predecessor or the successor.
+  Each combination is covered by one of the cases.
+\end{proof}
+
+\begin{theorem}
+\label{thm:equivalence}
+
+Let $\Imc$ be an upgraded typicality interpretation with a non-empty set of model recoveries (\ie, a ``consistent upgrade'').
+
+\begin{enumerate}
+  \item For every $\Jmc$ s.t. $\Imc, \Imc_1, \dots, \Imc_k = \Jmc$ is a recovery path, $\Jmc$ is a model recovery of $\Imc$ (except condition 4).
+  \item For every model recovery $\Jmc$ there is a recovery path $\Imc, \Imc_1, \dots, \Imc_k = \Jmc$. 
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} (Ideas)
+
+  Show that: 
+
+  \begin{itemize}
+    \item No violations = model.
+    \item Condition 2 is also given.
+    \item Pre canonical property should follow from the rules -- if there is a violation of the pre canonical property, then there is a rule to apply! This is guaranteed by the edge labelling.
+    \item Idea for the other direction (very raw): if there is no recovery path, then there is one triggered instance of the $\bot$ rule. If this is the case, there is no model recovery. No concrete idea of how to show this.
+    \begin{itemize}
+      \item Another idea would be proving that any recovery $\Jmc$ could be achieved by applying the rules to $\Imc$. A constructive approach.
+    \end{itemize}
+    \item Condition 4 would need an additional last step pruning the eventual gluts brought by the recovery procedure. This can be done. One dumb way would be brute force checking everything. There may be smarter and less work intensive ways of doing this.
+  \end{itemize}
+  
+\end{proof}
+
+
+\section{December 26th Onwards}
+
+\textbf{Main question}: procedure and semantics do not yield the same results. Semantics accept arbitrary enlargements of the models, as condition (5) bounds minimality to a fixed roles. 
+
+Two possible ways of dealing with this problem:
+
+(1) Go back to previous minimality (unbounded by roles).
+
+\begin{itemize}
+  \item \textbf{Pros}: avoid problems s.a. arbitrary enlargement. 
+  \item \textbf{Cons}: is not equivalent to the procedure, as it rejects some possible solutions because of minimality.
+\end{itemize}
+
+(2) Define model recovery procedurally and forget the purely semantic criteria. A ``semantic procedure''.
+
+\begin{itemize}
+  \item \textbf{Pros}: simple and could work.
+  \item \textbf{Cons}: loses the semantic flavour.
+\end{itemize}
+
+A third way?
+
+\subsection{2 -- semantic procedure}
+
+Based on the idea of \textbf{model fix} (generates a preference relation over models).
+
+Questions:
+
+\begin{itemize}
+  \item One model fix per model fix, or can we accomodate several? Those yield different results.
+\end{itemize}
+
+An idea:
+
+\begin{itemize}
+  \item Define \textbf{two classes} of model recovery. The first is the one based on a series of fixes. The second one would be stronger, eliminating artifacts of the upgrade procedure by requiring the types are required by the roles.
+\end{itemize}
+
+What to prove:
+
+\begin{enumerate}
+  \item Keeps the invariant (i.e. elements have only maximal nieghbors and every required maximal neighbor.)
+  \item Increases elements in the root's N-type and keeps the rest unchanged.
+\end{enumerate}
+
+
+\bibliography{biblio.bib}
+\end{document}

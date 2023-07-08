@@ -1,0 +1,6 @@
+\frametitle{Lexicographic Domain -- Definition}
+\begin{itemize}
+    \item Let $Cons(\Kmc, C)$ return all the $\Umc \subseteq \Dmc$ non-exceptional w.r.t. $C$. \pause
+    \item Let $Cons^{lex}_{\max}(\Kmc, C)$ denote only the maximal (according to the lexicographic orders) elements of $Cons(\Kmc, C)$.
+    \item To define $\Delta^{lex}$, for every $C$ in the relevant context, include every $\typel{C}{\Umc}$ s.t. $\Umc \subseteq \Umc'$ for some $\Umc' \in Cons^{lex}_{\max}(\Kmc, C)$.
+  \end{itemize}
