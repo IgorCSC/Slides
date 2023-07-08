@@ -1,0 +1,262 @@
+\newcommand{\intersections}{ \mathcal{I} \cap \mathcal{J} }
+
+%Defeasible inclusion
+\newcommand{\definc}{\mathrel{\substack{
+\textstyle\sqsubset\\[-0.2ex]\textstyle\sim}}} \newcommand{\defincSmall}{\mathop{\tiny{\substack{
+\textstyle\sqsubset\\[-1ex]\textstyle\sim}}}}  % yes it's a hack...
+
+
+\DeclareMathOperator{\canmod}{\mathcal{I}_C} 
+
+
+% % DL names
+\newcommand{\ALC}{\ensuremath{\mathcal{ALC}}\xspace}
+\newcommand{\EL}{\ensuremath{\mathcal{E\!L}}\xspace}
+\newcommand{\ELI}{\ensuremath{\mathcal{E\!LI}}\xspace}
+\newcommand{\ELIbot}{\ensuremath{\mathcal{E\!LI}_\bot}\xspace}
+\newcommand{\ELbot}{\ensuremath{\mathcal{E\!L}_\bot}\xspace}
+
+%\newcommand{\bigsqcap}{\ensuremath{\sqcap}} %Placeholder. Find a suitable macro.
+
+% %  
+\newcommand{\Amc}{\ensuremath{\mathcal{A}}\xspace}
+\newcommand{\Emc}{\ensuremath{\mathcal{E}}\xspace}
+\newcommand{\Dmc}{\ensuremath{\mathcal{D}}\xspace}
+\newcommand{\Imc}{\ensuremath{\mathcal{I}}\xspace}
+%  obsolete for appendix \newcommand{\ICan}{\ensuremath{\mathcal{I}_{C}}\xspace}
+\newcommand{\Jmc}{\ensuremath{\mathcal{J}}\xspace}
+\newcommand{\Kmc}{\ensuremath{\mathcal{K}}\xspace}
+\newcommand{\Pmc}{\ensuremath{\mathcal{P}}\xspace}
+\newcommand{\Tmc}{\ensuremath{\mathcal{T}}\xspace}
+\newcommand{\Umc}{\ensuremath{\mathcal{U}}\xspace}
+
+% % % names for sets 
+\newcommand{\Rname}{\ensuremath{\sf N_R}\xspace}
+\newcommand{\Cname}{\ensuremath{\sf N_C}\xspace}
+\newcommand{\Roles}{\ensuremath{\Rname^{-}}\xspace}
+\newcommand{\Lang}[1]{\ensuremath{\mathfrak{L}({#1})}\xspace} %Logic.
+
+% signature
+\newcommand{\sig}[1]{\ensuremath{{\sf sig}(#1)}\xspace}
+\newcommand{\sigC}[1]{\ensuremath{{\sf sig_C}(#1)}\xspace}
+\newcommand{\sigR}[1]{\ensuremath{{\sf sig_R}(#1)}\xspace}
+
+% % % NORMALIZATION 
+\newcommand{\tnorm}[1][\Tmc]{\ensuremath{\mathsf{norm\text{-}T}}({#1})} %1: TBox.
+\newcommand{\dnorm}[1][(\Tmc, \Dmc)]{\ensuremath{\mathsf{D}-\mathsf{normalization}}({#1})} %1: Full DKB (e.g. (T, D))
+\newcommand{\card}[1]{\ensuremath{\mid {#1} \mid}} %1: Set.
+
+% % % misc closure and materialisation-based concepts
+\newcommand{\materialization}[1]{\ensuremath{\overline{{#1}}}\xspace} % 1. Set of DCIs.
+\newcommand{\ELmaterialization}[1]{\ensuremath{\widehat{{#1}}}\xspace} % 1. Set of DCIs.
+ 
+\newcommand{\setconj}[1]{\ensuremath{\lceil{#1}\rceil}} % 1. Set of concept names.
+\newcommand{\rank}[2]{r_{#1}(#2)}
+\newcommand{\rankk}[1]{\rank{\Kmc}{#1}}
+
+
+% % %  for the interpretations
+\newcommand{\ComNeig}[3]{\ensuremath{cn^{#2}_{#1}({#3})}} %1: Set of interpretations (or KB), 2. role, 3. Concept.
+\newcommand{\ComInt}[1]{\ensuremath{\Imc_{#1}}} %1: Set of interpretations (or KB).
+\newcommand{\CanmodEL}[1][\Kmc]{\ensuremath{\Imc^{#1}}\xspace}
+\newcommand{\repDom}[1][\Tmc]{\ensuremath{\Delta^{#1}}\xspace}
+\newcommand{\Canmod}{\ensuremath{\Imc_{\Tmc}}}
+\newcommand{\Typdom}{\ensuremath{\Delta^{\Kmc}}}
+
+%\newcommand{\Mintypmod}[1]{\ensuremath{\Imc_{min, {#1}}^{\Kmc}}} %1: Domain shape (e.g. Rat/Rel). Obs. Before, instead of \Kmc, it was Tmc, \Dmc. Also included 'min'.
+
+\newcommand{\Mintypmod}[1][]{\ensuremath{\Imc_{min{{#1}}}^{\Kmc}}} %1: Domain shape (e.g. Rat/Rel). Obs. Before, instead of \Kmc, it was Tmc, \Dmc. Also included 'min'.
+
+% % % typicality upgrade procedure
+\newcommand{\Dedges}[2]{\ensuremath{D({#1}, {#2})}}
+\newcommand{\Fedges}[2]{\ensuremath{F({#1}, {#2})}}
+\newcommand{\NamesK}{\ensuremath{N_{\Kmc}}}
+\newcommand{\Ntype}[2]{\ensuremath{t_{\NamesK}({#1}, {#2})}} %1: element, 2: interpretation
+\newcommand{\UpEdges}[3]{\ensuremath{UE_{#1}({#2},{#3})}} %1: role name, 2: interpretation, 3: Role System
+
+\newcommand{\Upleft}[3]{\ensuremath{U^{s}_{#1}({#2},{#3})}} %1: role name, 2: interpretation, 3: Role System, 4: Edge
+\newcommand{\Upright}[3]{\ensuremath{U^{p}_{#1}({#2},{#3})}} %1: role name, 2: interpretation, 3: Role System, 4: Edge
+
+
+\newcommand{\Upneigh}[5]{\ensuremath{\mathsf{UP}^{{#5}}({#1}, {#2}, {#3}, {#4})}} %1: interpretation, 2: role system, 3: role, 4:edge, 5: successor/predecessor.
+\newcommand{\Upsuc}[4]{\Upneigh{#1}{#2}{#3}{#4}{s}} %1: interpretation, 2: role system, 3: role, 4:edge.
+\newcommand{\Uppred}[4]{\Upneigh{#1}{#2}{#3}{#4}{p}} %1: interpretation, 2: role system, 3: role, 4:edge.
+\newcommand{\Upgrade}[2]{\ensuremath{\mathrm{Up} ({#1}, {#2})}} %1: Interpretation, 2: role system
+
+\newcommand{\Mr}[4]{\ensuremath{\mathrm{mr}({#1}, {#2}, {#3}, {#4})}} %1: interpretation, 2: role system, 3: anchor, 4.
+
+\newcommand{\Suc}[3]{\ensuremath{\mathsf{S}^{#3}_{#1}(#2)}} %1: role, 2: element, index
+\newcommand{\Sucr}[1]{\ensuremath{\Suc{r}{#1}{}}} %1: element, 2: index
+
+\newcommand{\Allup}[3]{\ensuremath{\mathbb{UP}^{#3}({#1}, {#2})}} %1: Interpretation, 2: role system, 3: successor or predecessor
+\newcommand{\Allsup}[2]{\Allup{#1}{#2}{s}} %1: Interpretation, 2: role system
+\newcommand{\Allpup}[2]{\Allup{#1}{#2}{p}} %1: Interpretation, 2: role system
+
+\newcommand{\TypicalityUpgradeOperator}{\ensuremath{\mathsf{T}}}
+\newcommand{\TUop}[2]{\ensuremath{\TypicalityUpgradeOperator}({#1}, {#2})} %1: interpretation, 2: role system
+\newcommand{\TUopset}[1]{\ensuremath{\TypicalityUpgradeOperator}({#1})} %1: set (of interpretations and role systems)
+
+\newcommand{\Pred}[3]{\ensuremath{\mathsf{P}^{#3}_{#1}(#2)}} %1: role, 2: element, 3: index
+\newcommand{\Predr}[1]{\ensuremath{\Pred{r}{#1}{}}} %1: element
+\newcommand{\Predrindex}[2]{\ensuremath{\Pred{r}^{#2}{#1}}} %1: element
+\newcommand{\SPset}[1][]{ \ensuremath{\mathsf{RS}}^{#1}} %1: index. Usually an interpretation.
+\newcommand{\DPset}[2]{\ensuremath{\mathsf{DS}(#1, #2)}} %1: element, 2: role system
+\newcommand{\Itc}{\ensuremath{\pitchfork}}
+\newcommand{\Con}{\ensuremath{\mathbb{C}\xspace}}
+\newcommand{\ConDomain}{\ensuremath{\Delta^{\Con}\xspace}}
+
+% % % maximal elements
+\newcommand{\maxIntRole}[3]{\ensuremath{max^{#1}_{#2}(#3)}\xspace} % 1: Interpretation, 2: role, 3: element
+
+\newcommand{\maxNeigh}[3]{\ensuremath{max^{#1}_{#2}(#3)}\xspace} % 1: Interpretation, 2: role, 3: element
+
+
+\newcommand{\maxIr}[1]{\ensuremath{\maxIntRole{\Imc}{r}{#1}}\xspace} % maximal r-successor in Imc of #1
+\newcommand{\maxElDom}[2]{\ensuremath{typ_{#1}({#2})}} % 1: Domain, 2: element.
+\newcommand{\maxEl}[1]{\maxElDom{\Delta}{#1}} % 1: Domain, 2: element.
+\newcommand{\maxSucPred}[4]{\ensuremath{max_{#1}^{#2}({#3}, {#4})}} %1: Set of interpretations-RoleSystems, 2: successor/predecessor, 3: element, 4: role
+\newcommand{\maxSuc}[3]{\maxSucPred{#1}{s}{#2}{#3}} %1: Set of interpretations-RoleSystems, 2: element, 3: role.
+\newcommand{\maxSucr}[2]{\maxSucPred{#1}{s}{#2}{r}} %1: Set of interpretations-RoleSystems, 2: element, 3:
+
+\newcommand{\maxPred}[3]{\maxSucPred{#1}{p}{#2}{#3}} %1: Set of interpretations-RoleSystems, 2: element, 3: role.
+\newcommand{\maxPredr}[2]{\maxSucPred{#1}{p}{#2}{r}} %1: Set of interpretations-RoleSystems, 2: element, 3:
+
+% % % General typicality domain
+\newcommand{\gendom}[2]{\ensuremath{\Delta_{{#1}}^{#2}}} %1: shape (e.g. rational/relevant); 2: KB
+
+% % % rational closure
+%\newcommand{\ratdom}[1]{\ensuremath{\Delta_{{#1}rat}}}
+\newcommand{\ratdom}[1][]{\gendom{{#1}rat}{\Kmc}}
+\newcommand{\smallratdom}{\ratdom[\textbf{s}]}
+\newcommand{\fullratdom}{\ratdom[\textbf{f}]}
+\newcommand{\smallrattyp}[1]{\ensuremath{\Imc^{#1}_{\textbf{s}rat}}}
+\newcommand{\fullrattyp}[1]{\ensuremath{\Imc^{#1}_{\textbf{f}rat}}}
+\newcommand{\minrattyp}[1]{\ensuremath{\Imc^{#1}_{rat}}}
+
+% % % relevant closure 
+% OLD: \newcommand{\reldom}{\ensuremath{\Delta_{rel}}}
+\newcommand{\reldom}[1][\Kmc]{\gendom{rel}{#1}} %New. 1. DKB (opt).
+\newcommand{\minreltyp}[1][\Kmc]{\ensuremath{\Imc^{#1}_{rel}}}
+\newcommand{\Justifications}[2]{\ensuremath{\mathsf{Justifications}({#1}, {#2})}}
+\newcommand{\kmJustifications}{\Justifications{\Kmc}{M}}
+\newcommand{\kcJustifications}{\Justifications{\Kmc}{C}}
+\newcommand{\minimalJustifications}[1]{\ensuremath{S^{\min}_{#1}}}
+\newcommand{\relevantSet}[2]{\ensuremath{\Umc_{#1}^{#2}}\xspace}
+\newcommand{\relevantSetK}[1]{\relevantSet{\Kmc}{#1}}
+
+% % % Maximal Typicality
+\newcommand{\Tfixpoint}{\ensuremath{\TypicalityUpgradeOperator_{\max}}}
+\newcommand{\Tmax}{\ensuremath{\Tfixpoint(\Kmc)}} %This is the fixpoint defined to the minimal typicality model.
+\newcommand{\Maxtypmod}[1][]{\ensuremath{\Imc^{\Kmc}_{\mathsf{max, {#1}}}}} %1: Domain shape (e.g. Rat/Rel). Obs. Before, instead of \Kmc, it was Tmc, \Dmc. Also included 'min'.
+
+% Reformulation typicality models
+\newcommand{\gentypmod}[3]{\ensuremath{\Imc^{#1}_{\mathsf{{#2}, {#3}}}}} %1. DKB, 2. Maximality (e.g. min/max), 3. Strenght (e.g. {s, f}rat, rel).
+\newcommand{\mintypmod}[1][\Kmc]{\ensuremath{\Imc^{#1}_{\mathsf{{min}}}}} %Obs. the MIN typ mod (sans strenght) is the only macro that do NOT depend on the GENTYPMOD.
+
+\newcommand{\minrattypp}[1][\Kmc]{\gentypmod{#1}{min}{rat}}
+\newcommand{\minsrattypp}[1][\Kmc]{\gentypmod{#1}{min}{\mathbf{s}rat}}
+\newcommand{\minfrattypp}[1][\Kmc]{\gentypmod{#1}{min}{\mathbf{f}rat}}
+
+\newcommand{\minreltypp}[1][\Kmc]{\gentypmod{#1}{min}{rel}}
+
+\newcommand{\maxrattypp}[1][\Kmc]{\gentypmod{#1}{max}{rat}}
+\newcommand{\maxsrattypp}[1][\Kmc]{\gentypmod{#1}{max}{\mathbf{s}rat}}
+\newcommand{\maxfrattypp}[1][\Kmc]{\gentypmod{#1}{max}{\mathbf{f}rat}}
+\newcommand{\maxreltypp}[1][\Kmc]{\gentypmod{#1}{max}{rel}}
+
+% % % Forms of entailment
+\newcommand{\matModels}[1]{\models_{\mathsf{mat}, #1}}
+\newcommand{\ratModels}{\matModels{\mathsf{rat}}}
+\newcommand{\relModels}{\matModels{\mathsf{rel}}}
+\newcommand{\modelsprop}{\ensuremath{\models_{\mathsf{prop}}}}
+\newcommand{\modelsnest}[1][]{\ensuremath{\models_{\mathsf{nest, { {#1}}}}}}
+\newcommand{\modelsmat}[1][]{\ensuremath{\models_{\mathsf{mat, { {#1}}}}}}
+
+\newcommand{\ratModelsnest}{\modelsnest[rat]}
+\newcommand{\sratModelsnest}{\modelsnest[srat]}
+\newcommand{\fratModelsnest}{\modelsnest[frat]}
+\newcommand{\relModelsnest}{\modelsnest[rel]}
+
+% % % examples
+\newcommand{\dlFont}[1]{\ensuremath{\mathsf{#1}}\xspace}
+
+
+% % %  names of complexity classes
+\newcommand{\PTime}{\textsc{P}\xspace}
+\newcommand{\NP}{\textsc{NP}\xspace}
+\newcommand{\coNP}{\textsc{co-NP}\xspace}
+\newcommand{\PSpace}{\textsc{PSpace}\xspace}
+\newcommand{\ExpTime}{\textsc{ExpTime}\xspace}
+\newcommand{\NExpTime}{\textsc{NExpTime}\xspace}
+\newcommand{\coNExpTime}{\textsc{co-NExpTime}\xspace}
+\newcommand{\ExpSpace}{\textsc{ExpSpace}\xspace}
+\newcommand{\TwoExpTime}{\textsc{2-ExpTime}\xspace}
+\newcommand{\TwoExpSpace}{\textsc{2-ExpSpace}\xspace}
+
+%  one counter to rule them all!
+%
+%\newtheorem{definition}{Definition}
+%\newtheorem{example}[definition]{Example}
+%\newtheorem{lemma}[definition]{Lemma}
+%\newtheorem{theorem}[definition]{Theorem}
+%\newtheorem{corollary}[definition]{Corollary}
+
+%
+% % %  macros for renaming
+%
+\newcommand{\base}{base } % used to be relevant (as in relevant domain)
+\newcommand{\Base}{Base } % used to be relevant   
+
+% % %  convenience macros for writing
+\newcommand{\wrt}{w.r.t.\ }
+\newcommand{\eg}{e.g.\ }
+\newcommand{\ie}{i.e.\ }
+\newcommand{\st}{s.t.\ }
+
+
+% % % for communication in the documents
+\newcommand{\igor}[1]{\todo[inline,author=Igor,color=cyan]{#1}}
+\newcommand{\anni}[1]{\todo[inline,author=Anni,color=lightgray]{#1}}
+\newcommand{\draft}[1]{\todo[inline,author=draft,color=green]{#1}}
+\newcommand{\new}[1]{\textcolor{blue}{#1}}
+\newcommand{\error}[1]{\textcolor{red}{#1}}
+
+
+
+% % % new macros -- arrange later [igor]
+\newcommand{\typel}[2]{\ensuremath{{#1}_{#2}}}
+\newcommand{\typelMU}{\typel{M}{\mathcal{U}}}
+\newcommand{\typelNU}{\typel{N}{\mathcal{U'}}}
+
+\newcommand{\upcand}[2]{\ensuremath{\mathbf{UC}} ({#1}, {#2}) }
+
+\newcommand{\etable}[1][]{\ensuremath{\mathcal{E}^{#1}}\xspace} % Interpretation
+\newcommand{\rf}[1][r]{\ensuremath{ f_{#1} } } % Role function SYMBOL (without function parenthesis). 1. role.
+\newcommand{\rolefunc}[3][r]{\ensuremath{ \rf[{#1}]({#2}, {#3}) }} % etable component (function). 1. index role. 2. first element. 3. second element.
+\newcommand{\rolefuncStd}{\rolefunc{\typel{M}{\Umc}}{\typel{N}{\Umc'}}} % standard etable function: role r; MU, NU' as elements.
+\newcommand{\indexedrolefunc}[4][r]{ \ensuremath\rf[{#1}]^{{#4}}({#2}, {#3}) }  % role function indexed with an interpretation. Used in defining typicality interpretation strenghtening. 1. index role. 2. first element. 3. second element. 4. Interpretation (e.g. '\Imc').
+
+
+\newcommand{\tstreng}[5]{\ensuremath{ \mathbf{ST}_{#1}({#2}, {#3}, {#4}, {#5}) }} % Typicality Interpretation Strenghtening. 1. Role; 2. Interpretation; 3. Edge table, 4. Edge (e.g. (d,e)), 5. Upgrade's root (e.g. 'e').
+\newcommand{\tstrengstd}{{\tstreng}{r}{\Imc}{\etable{\Imc}}{a}{b}}
+
+\newcommand{\dpset}[2]{\ensuremath{ \mathbf{DS} ({#1}, {#2}) }} % Dependency set. 1. Edge table; 2. element.
+
+\newcommand{\minmodrec}[3]{ \ensuremath{ \mathbf{mmr} ({#1}, {#2}, {#3})}} % (Minimal) model recovery. 1. Typicality Interpretation; 2. Edge table; 3. Element (root / center)
+
+\newcommand{\tstrengset}[3]{ \ensuremath{ \Gamma_{\mathbf{ST}} ({#1}, {#2}, {#3}) } } % Set of all typicality interpretation strenghtenings. 1. Typicality interpretation; 2. Etable; 3. DKB K.
+
+\newcommand{\fullupgradeSymbol}{\ensuremath{\mathsf{T}}} %Symbol used for the full upgrade step _and_ for the fixpoint.
+
+\newcommand{\fullupgrade}[3]{\ensuremath{\fullupgradeSymbol ({#1}, {#2}, {#3})}} % Full upgrade step. Receives a (set of) input models of K, outputs a set of strenghtened models of K. 1. Interpretation; 2. Edge table; 3. DKB.
+
+\newcommand{\tfixpoint}[3]{\ensuremath{\fullupgradeSymbol_{\max}}({#1}, {#2}, {#3})} % Fixpoint of the upgrade procedure over a typicality interpretation and its associated edge table w.r.t. a DKB K. 1. Typicality interpretation; 2. Edge table; 3. DKB.
+
+%%%
+
+\newcommand{\assigned}{\mathrel{\mathop:}=}
+\newcommand{\grammar}{\mathrel{\mathop:}\assigned}
+
+\newcommand{\col}[1]{{\color{orange}{#1}}} %
+\newcommand{\coltw}[1]{{\color{teal}{#1}}} %
+\newcommand{\colth}[1]{{\color{magenta}{#1}}} %

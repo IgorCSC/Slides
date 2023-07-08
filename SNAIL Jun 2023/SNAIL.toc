@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Description Logics}{2}{0}{1}
+\beamer@sectionintoc {2}{Typicality \& Defeasible Reasoning in DLs}{19}{0}{2}
+\beamer@sectionintoc {3}{Typicality Models}{47}{0}{3}
+\beamer@sectionintoc {4}{Introducing Inverse Roles -- $\ensuremath {\mathcal {E\!LI}_\bot }\xspace $}{62}{0}{4}
+\beamer@sectionintoc {5}{Nested Reasoning}{77}{0}{5}

@@ -1,0 +1,10 @@
+\frametitle{Future Work}
+
+\begin{itemize}
+  \item Work with stronger materialisation-based reasoning coverages (e.g. lexicographic, relevant);
+  \item Study complexity of this reasoning procedure;
+  \item Investigate the broader class of horn-DLs;
+  \item Compare with other existing frameworks;
+  \item Work on a set of KLM-like postulates that better capture quantification.
+\end{itemize}
+

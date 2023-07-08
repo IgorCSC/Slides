@@ -1,0 +1,7 @@
+\frametitle{Avenues for future research}
+\begin{itemize}
+    \item Extending the typicality framework for Horn-DLs.
+    \item Including more complex reasoning tasks, such as conjunctive query answering.
+    \item Explore the complexity of the calculus for $\ELIbot$.
+    \item Implementing typicality-based reasoners.
+  \end{itemize}
