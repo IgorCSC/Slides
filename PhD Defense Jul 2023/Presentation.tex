@@ -429,7 +429,56 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
 \end{frame}
 
 \begin{frame}{Lattice Domains -- Relevant and Lexicographic}
-  .
+
+  \centering{
+    \scalebox{.95}{
+          \begin{tikzpicture}
+              \node[align=left, draw, color=black!20] at (0,6) (D) {\color{black!20}$\Dmc$  \\ \color{white}$\dlFont{C} \definc \dlFont{F} \hspace{8mm}$ \\ \footnotesize {\color{Plum}$\dlFont{H} \hspace{12mm}$}{ \color{white} $\dlFont{D,P}$}};
+            
+              %%% Level 2
+            
+              \node[align=left, draw, color=black!20] at (-3,4) (B1B2) {\color{black!20}$\dlFont{B} \definc \dlFont{M}$  \\ \color{black!20}$\dlFont{B} \definc \dlFont{C} \hspace{8mm}$ \\ \footnotesize {\color{Plum}$\dlFont{H} \hspace{12mm}$}{ \color{white} $\dlFont{D,P}$}};
+            
+              \node[align=left, draw, color=black!20] at (0,4) (B1P) {\color{black!20}$\dlFont{B} \definc \dlFont{M}$ \\ \color{black!20}$\dlFont{D} \definc \dlFont{A}$ \\ \footnotesize {\color{Plum}$\dlFont{H} \hspace{12mm}$}{ \color{white} $\dlFont{D,P}$}};
+            
+              \node[align=left, draw, color=black!20] at (3,4) (B2P) {\color{black!20}$\dlFont{D} \definc \dlFont{A} \hspace{8mm}$ \\ \color{black!20}$\dlFont{B} \definc \dlFont{C}$ \\ \footnotesize {\color{Plum}$\dlFont{H} \hspace{12mm}$}{ \color{RedOrange} $\dlFont{D,P}$}};
+            
+              %%% Level 1
+            
+              \node[align=left, draw, color=black!20] at (-3,2) (B1) {\color{black!20}$\dlFont{B} \definc \dlFont{M}$  \\ \color{white}$\dlFont{C} \definc \dlFont{F} \hspace{8mm}$ \\\footnotesize {\color{Plum}$\dlFont{H} \hspace{12mm}$}{ \color{white} $\dlFont{D,P}$}};
+            
+              \node[align=left, draw, color=black!20] at (0,2) (B2) {\color{black!20}$\dlFont{B} \definc \dlFont{C}$ \\ \color{white}$\dlFont{D} \definc \dlFont{I}$ \\ \footnotesize {\color{Plum}$\dlFont{H} \hspace{12mm}$}{ \color{RedOrange} $\dlFont{D,P}$}};
+            
+              \node[align=left, draw, color=black!20] at (3,2) (P) {\color{black!20}$\dlFont{D} \definc \dlFont{A}$ \\ \color{white}$\dlFont{C} \definc \dlFont{F}$ \\ \footnotesize {\color{Plum}$\dlFont{H} \hspace{12mm}$}{ \color{RedOrange} $\dlFont{D,P}$}};
+            
+              %%%% Level 0
+            
+              \node[align=left, draw, color=black!20] at (0,0) (empty) {\color{black!20}$\emptyset$ \\ \color{white}$\dlFont{C} \definc \dlFont{F} \hspace{8mm}$ \\ \footnotesize {\color{Plum}$\dlFont{H} \hspace{12mm}$}{ \color{RedOrange} $\dlFont{D,P}$}};
+              
+              %%% Lattice lines
+              \draw[-, color=black!20] (D)--(B1B2);
+              \draw[-, color=black!20] (D)--(B1P);
+              \draw[-, color=black!20] (D)--(B2P);
+            
+              \draw[-, color=black!20] (B1B2)--(B1);
+              \draw[-, color=black!20] (B1B2)--(B2);
+            
+              \draw[-, color=black!20] (B1P)--(B1);
+              \draw[-, color=black!20] (B1P)--(P);
+            
+              \draw[-, color=RedOrange] (B2P)--(B2);
+              \draw[-, color=RedOrange] (B2P)--(P);
+            
+              \draw[-, color=black!20] (B1)--(empty);
+              \draw[-, color=RedOrange] (B2)--(empty);
+              \draw[-, color=RedOrange] (P)--(empty);
+            
+              %\draw[-latex, thick, bend left] (-0.7,5.5) to(3.8,3.6);
+            
+              \end{tikzpicture}
+           }
+        }
+
 \end{frame}
 
 \begin{frame}{Propositional Reasoning}
@@ -777,7 +826,52 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
 \end{frame}
 
 \begin{frame}{Termination Argument}
- --> DECIDE WHETHER TO INCLUDE.
+  \centering{
+    \begin{tikzpicture}
+    %%% Headers 
+    \node[] at (2,4) (A) {Update};
+    \node[] at (8,4) (A) {Model recovery};
+
+    %%% Interpretations
+
+    % 1
+    \node[] at (0,0) (root) {$\typel{M}{\Umc}$};
+    \node[] at (2,0) (A) {$\{A\}$};
+    \node[] at (2,1) (AB) {$\{A, B\}$};
+    \node[] at (2,2) (vdots) {$\vdots$};
+    \node[] at (2,3) (SigC) {$\sigC{\Kmc}$};
+
+    \node[] at (4,3) (D) {$\Dmc$};
+    \node[] at (4,2) (vdots2) {$\vdots$};
+    \node[] at (4,1) (U1) {$\{\Umc_1\}$};
+    \node[] at (4,0) (ES) {$\{\emptyset\}$};
+
+    \node at (1, -0.2) (r1) {$r$};
+    \draw [-latex](root) to (A);
+    \draw [-](A) to (ES);
+    \draw [-, dashed, color=RedOrange](A) to (U1);
+
+    % 2
+    \node[] at (6,0) (root) {$\typel{M}{\Umc}$};
+    \node[] at (8,0) (A) {$\{A\}$};
+    \node[] at (8,1) (AB) {$\{A, B\}$};
+    \node[] at (8,2) (vdots) {$\vdots$};
+    \node[] at (8,3) (SigC) {$\sigC{\Kmc}$};
+    
+    \node[] at (10,3) (D) {$\Dmc$};
+    \node[] at (10,2) (vdots2) {$\vdots$};
+    \node[] at (10,1) (U1) {$\{\Umc_1\}$};
+    \node[] at (10,0) (ES) {$\{\emptyset\}$};
+    
+    \node at (7, -0.3) (r1) {$r$};
+    \draw [-latex, dashed](root) to (A);
+      \node at (6.86,0) (no) {\large\color{red}$x$};
+    \draw [-latex, dashed, RedOrange](root) to (AB);
+    \draw [-](AB) to (ES);
+    \draw [-](AB) to (U1);
+
+    \end{tikzpicture}
+}
 \end{frame}
 
 \begin{frame}{Nested Reasoning}
@@ -825,7 +919,7 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
   \bigskip \pause
 
     \begin{itemize}
-      \item $\color{RedOrange} \Kmc \models \dlFont{Human} \definc \exists \dlFont{worships}.\dlFont{Anthropomorphic}$ \pause
+      \item $\Kmc \models \dlFont{Human} \definc \exists \dlFont{worships}.\dlFont{Anthropomorphic}$ \pause
       \item $\Kmc \not\models \dlFont{Deity} \definc \dlFont{Corporeal}$ (Inheritance Blocking)
     \end{itemize}
 
@@ -836,7 +930,7 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
   %{\footnotesize\color{red}Obs. ignoring $\dlFont{Human} \definc \exists \dlFont{worships}.\dlFont{Deity}$ axiom.}
 
   \centering{
-  \scalebox{.95}{
+  \scalebox{.9}{
         \begin{tikzpicture}
             \node[align=left, draw, color=black!20] at (0,6) (D) {\color{black!20}$\Dmc$  \\ \color{white}$\dlFont{C} \definc \dlFont{F} \hspace{8mm}$ \\ \footnotesize {\color{Plum}$\dlFont{H} \hspace{12mm}$}{ \color{white} $\dlFont{D,P}$}};
           
@@ -889,17 +983,61 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Conclusions}
-\color{red}Include comparisons between strengths.
+\begin{frame}{Comparing Different Entailments}
+  \centering{
+    \begin{tikzpicture}
+    % % % MatBas
+    \node[] at (0,-2) (Mrat) {MatBas. \ratS};
+    \node[] at (3,-2) (Mrel) {MatBas. \relS};
+    \node[] at (6,-2) (Mlex) {MatBas. \lexS};
 
-Work to do.
+    % % % Propositional
+    \node[] at (0,0) (Prat) {Prop. \ratS};
+    \node[] at (3,0) (Prel) {Prop. \relS};
+    \node[] at (6,0) (Plex) {Prop. \lexS};
+
+    % % % Nested
+    \node[] at (0,2) (Nrat) {Nest. \ratS};
+    \node[] at (3,2) (Nrel) {Nest. \relS};
+    \node[] at (6,2) (Nlex) {Nest. \lexS};
+
+    % % % Edges
+    \draw [latex-latex](Plex) -- (Mlex) node[midway, left] {$=$};
+    \draw [latex-latex](Prel) -- (Mrel) node[midway, left] {$=$};
+    \draw [latex-latex](Prat) -- (Mrat) node[midway, left] {$=$};
+
+    \draw [-latex](Plex) -- (Prel) node[midway, above] {$<$};
+    \draw [-latex](Prel) -- (Prat) node[midway, above] {$<$};
+
+    \draw [latex-](Plex) -- (Nlex) node[midway, left] {$<$};
+    \draw [latex-](Prel) -- (Nrel) node[midway, left] {$<$};
+    \draw [latex-](Prat) -- (Nrat) node[midway, left] {$<$};
+
+    \draw [latex-latex](Nlex) -- (Nrel) node[midway, above] {$\not=$};
+    \draw [latex-latex](Nrel) -- (Nrat) node[midway, above] {$\not=$};
+    \draw [latex-latex, bend right](Nlex) to (Nrat) node[] at(3,2.7) {$\not=$};
+
+    \end{tikzpicture}
+    } 
 \end{frame}
 
-
 \begin{frame}{Future work}
-\color{red} 
-Work to do.
+\large 
+\begin{itemize}
+  \item Investigate the complexity of the \strength-entailment for \ELIbot. \pause 
+  \item Is it possible to jump from \ELIbot to Horn-$\ALC$ with minor changes to the procedure? \pause 
+  \item Investigate what would be needed to go to more expressive Horn-DLs. \pause
+  \item TMs to more complex reasoning tasks.
+\end{itemize}
 \end{frame} 
+
+\begin{frame}
+  \centering{
+  \includegraphics[scale=.2]{img/flyingpeng.png}
+  }
+
+  \centering{Thanks!}
+\end{frame}
 
 \end{document}
 
