@@ -62,46 +62,64 @@
 % 1. Outline and motivation
 %
 
-\begin{frame}[fragile]{Outline}
-  \large
-  \begin{itemize}
-    \item Extend Description Logics (DLs) with reasoning inspired by the prototype theory of conceptualization.
-    \item Several suggestions in the literature are based on propositional settings.
-    \item Falling short of dealing with DL's first-order nature.
-    \item We examine a new semantical framework -- typicality models -- to deal with quantified defeasible inference. 
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{Outline}
+%   \large
+%   \begin{itemize}
+%     \item Extend Description Logics (DLs) with reasoning inspired by the prototype theory of conceptualization.
+%     \item Several suggestions in the literature are based on propositional settings.
+%     \item Falling short of dealing with DL's first-order nature.
+%     \item We examine a new semantical framework -- typicality models -- to deal with quantified defeasible inference. 
+%   \end{itemize}
+% \end{frame}
 
 \begin{frame}[fragile]{Motivation}
-\large
-DLs represent concepts by \emph{list of necessary sufficient conditions}.
 
-\begin{enumerate}
-  \item A Trojan soldier is a soldier natural from Troy.
-  \begin{itemize}
-    \item $\dlFont{TrojanSoldier} \sqsubseteq \dlFont{Human} \sqcap \dlFont{Trojan} \sqcap \dlFont{Soldier}$
-  \end{itemize} \pause
-  \item A parent is someone who is the father or the mother to someone.
-  \begin{itemize}
-    \item $\dlFont{Parent} \sqsubseteq \exists \dlFont{fatherOf}.\top \sqcup \dlFont{Parent} \sqsubseteq \exists \dlFont{motherOf}.\top$
-  \end{itemize}
-\end{enumerate}
+\textbf{DLs} represent concepts by \emph{list of necessary sufficient conditions}.
+
+\medskip 
+
+% A Trojan soldier is a soldier natural from Troy.
+% \begin{itemize}
+%   \item $\dlFont{TrojanSoldier} \sqsubseteq \dlFont{Human} \sqcap \dlFont{Trojan} \sqcap \dlFont{Soldier}$
+% \end{itemize} 
+
+{\footnotesize Birds are a group of warm-blooded vertebrates constituting the class Aves, characterised by feathers, toothless beaked jaws, the laying of hard-shelled eggs, a high metabolic rate, a four-chambered heart, and a strong yet lightweight skeleton.} 
+
+\bigskip \pause
+
+\textbf{Prototype theory} presents an alternate theory of conceputalization based on \textbf{similarity between members} and w.r.t. a \textbf{prototype} and supporting \textbf{grades of membership}.
+
+\medskip
+
+{\footnotesize A bird is a creature with wings and feathers that can fly through the air and lay eggs. They come in many colors and shapes and sing, chirp and squawk. Some examples of birds are robins, swallows and doves.}
+
+% \begin{enumerate}
+%   \item A Trojan soldier is a soldier natural from Troy.
+%   \begin{itemize}
+%     \item $\dlFont{TrojanSoldier} \sqsubseteq \dlFont{Human} \sqcap \dlFont{Trojan} \sqcap \dlFont{Soldier}$
+%   \end{itemize} \pause
+%   \item A parent is someone who is the father or the mother to someone.
+%   \begin{itemize}
+%     \item $\dlFont{Parent} \sqsubseteq \exists \dlFont{fatherOf}.\top \sqcup \exists \dlFont{motherOf}.\top$
+%   \end{itemize}
+% \end{enumerate}
+
 \end{frame}
 
-\begin{frame}[fragile]{Motivation}
-  \large
-  Prototype theory presents an alternate theory of conceputalization.
+% \begin{frame}[fragile]{Motivation}
+%   \large
+%   Prototype theory presents an alternate theory of conceputalization.
 
-  \begin{itemize}
-    \item Similarity between recognized members.
-    \item Different grades of membership.
-    \item Ideal concept members, \ie prototypes.
-  \end{itemize}
-\end{frame}
+%   \begin{itemize}
+%     \item Similarity between recognized members.
+%     \item Different grades of membership.
+%     \item Ideal concept members, \ie prototypes.
+%   \end{itemize}
+% \end{frame}
   
-\begin{frame}[fragile]{Motivation}
-\includegraphics[scale=.33]{img/birdstyp.png}
-\end{frame}
+% \begin{frame}[fragile]{Motivation}
+% \includegraphics[scale=.33]{img/birdstyp.png}
+% \end{frame}
 
 \begin{frame}[fragile]{Motivation}
   \includegraphics[scale=.33]{img/familyres.png}
@@ -155,11 +173,18 @@ $\materialization{\Umc} = \bigsqcap_{C \definc D \in \Umc} \materialization{C \d
 $\Kmc \models C \definc D \text{ iff } \Kmc \models C \sqcap \materialization{\Umc} \sqsubseteq D$
 for some $\Umc \subseteq \Dmc$ \medskip
 
-\textbf{Rational Chain} \\
-$\Dmc = \Emc_0 \supset \Emc_1 \supset \dots \supset \Emc_n$
 \end{frame}
 
 \begin{frame}{Rational Reasoning}
+
+  \begin{center} 
+  \textbf{Rational Chain} 
+
+  $\Dmc = \Emc_0 \supset \Emc_1 \supset \dots \supset \Emc_n$
+  \end{center}
+
+  \medskip
+
   \begin{tikzpicture}
 
     % 
@@ -184,35 +209,35 @@ $\Dmc = \Emc_0 \supset \Emc_1 \supset \dots \supset \Emc_n$
     \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Rational Reasoning}
-  \begin{tikzpicture}
+% \begin{frame}{Rational Reasoning}
+%   \begin{tikzpicture}
 
-    % 
-    \draw[gray,thick,fill=gray!30,rounded corners] (0, 3) rectangle (4,6); %TBox
-        \node[] at (2, 6.4) (TBox) {{\Large $\Tmc$}};
+%     % 
+%     \draw[gray,thick,fill=gray!30,rounded corners] (0, 3) rectangle (4,6); %TBox
+%         \node[] at (2, 6.4) (TBox) {{\Large $\Tmc$}};
 
-    \draw[gray,thick,fill=gray!30,rounded corners] (4.5, 2) rectangle (9.5,6); %DBox E_0
-        \node[] at (7, 6.4) (DBox) {{\Large $\Dmc = \Emc_0$}};
+%     \draw[gray,thick,fill=gray!30,rounded corners] (4.5, 2) rectangle (9.5,6); %DBox E_0
+%         \node[] at (7, 6.4) (DBox) {{\Large $\Dmc = \Emc_0$}};
 
-    \draw[Plum,thick,fill=Plum!50,rounded corners] (4.7, 5) rectangle (9.3,5.8); %TBox
-        \node[] at (10, 5.4) (DBox) {{\color{Plum} \Large $\Emc_1$}};
+%     \draw[Plum,thick,fill=Plum!50,rounded corners] (4.7, 5) rectangle (9.3,5.8); %TBox
+%         \node[] at (10, 5.4) (DBox) {{\color{Plum} \Large $\Emc_1$}};
 
-    % T - Axioms
-    \node [] at (2, 4.5) (TAxiom) {\begin{tabular}{c} {\large $\dlFont{Deity} \sqsubseteq \dlFont{Being}$} \\ ~ \\ {\large $\dlFont{Human} \sqsubseteq \dlFont{Being}$}  \\ ~ \\ {\large $\dlFont{Deity} \sqcap \dlFont{Mortal} \sqsubseteq \bot$} \end{tabular}};
+%     % T - Axioms
+%     \node [] at (2, 4.5) (TAxiom) {\begin{tabular}{c} {\large $\dlFont{Deity} \sqsubseteq \dlFont{Being}$} \\ ~ \\ {\large $\dlFont{Human} \sqsubseteq \dlFont{Being}$}  \\ ~ \\ {\large $\dlFont{Deity} \sqcap \dlFont{Mortal} \sqsubseteq \bot$} \end{tabular}};
 
-    % E_0 - Axioms
-    \node [] at (7, 5.5) (E_0Axiom) {\large $\dlFont{Deity} \definc \dlFont{Anthropomorphic}$};
+%     % E_0 - Axioms
+%     \node [] at (7, 5.5) (E_0Axiom) {\large $\dlFont{Deity} \definc \dlFont{Anthropomorphic}$};
 
-    % E_1 - Axioms
-    \node [] at (7, 3.5) (E_1Axiom) {\begin{tabular}{c} {\large $\dlFont{Being} \definc \dlFont{Mortal}$} \\ ~ \\ {\large $\dlFont{Being} \definc \dlFont{Corporeal}$} \\ ~ \\ {\large $\dlFont{Human} \definc\exists \dlFont{worships}.\dlFont{Deity}$} \end{tabular}};        
-    \end{tikzpicture}
+%     % E_1 - Axioms
+%     \node [] at (7, 3.5) (E_1Axiom) {\begin{tabular}{c} {\large $\dlFont{Being} \definc \dlFont{Mortal}$} \\ ~ \\ {\large $\dlFont{Being} \definc \dlFont{Corporeal}$} \\ ~ \\ {\large $\dlFont{Human} \definc\exists \dlFont{worships}.\dlFont{Deity}$} \end{tabular}};        
+%     \end{tikzpicture}
 
-    \medskip 
+%     \medskip 
 
-    \begin{center}
-    {\large$\Kmc \not\models \dlFont{Deity} \definc \dlFont{Corporeal}$}
-    \end{center}
-\end{frame}
+%     \begin{center}
+%     {\large$\Kmc \not\models \dlFont{Deity} \definc \dlFont{Corporeal}$}
+%     \end{center}
+% \end{frame}
 
 \begin{frame}{Rational Reasoning}
   \begin{tikzpicture}
@@ -278,7 +303,7 @@ $\Dmc = \Emc_0 \supset \Emc_1 \supset \dots \supset \Emc_n$
 % 3. Typicality Models -- Intro
 %
 
-\begin{frame}{Typicality Models -- Outline}
+\begin{frame}{Typicality Models}
 \large
 \begin{itemize}
   \item Special interpretations based on canonical models for lightweigth DLs.
@@ -287,50 +312,13 @@ $\Dmc = \Emc_0 \supset \Emc_1 \supset \dots \supset \Emc_n$
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Typicality Models -- The Basics}
-  \begin{center}
-    \Large{
-      $\typel{\color{Plum}C}{\color{RedOrange}\Umc}$
-    }
-  \end{center}
+\begin{frame}{Canonical Models for \ELbot and \ELIbot}
 
-  {\color{Plum}$C$} represents a concept and ${\color{RedOrange}\Umc} \subseteq \Dmc$ is a set of DCIs.
+  \centering{
+  $\Kmc \models C \sqsubseteq A$ iff $C \in A^{\Imc^{\Kmc}}$
+  }
 
-  Typicality interpretation is an interpretation $\Imc = (\Delta^{\Imc}, \cdot^{\Imc})$.
-
-  \medskip \pause
-
-  \textbf{Satisfaction}
-
-  \begin{itemize}
-    \item $\Imc \models C \sqsubseteq D$ iff $C^{\Imc} \subseteq D^{\Imc}$
-    \item $\Imc \models C \definc D$ iff $\typel{C}{\Umc} \in D^{\Imc}$ for maximally typical $\typel{C}{\Umc}$.
-  \end{itemize}
-
-% COMMENT: pure entailment does not interest us. Only 'flavored' (i.e. prop/nest x rat/rel/lex)
-
-\end{frame}
-
-\begin{frame}{Propositional and Nested Entailments}
-\large 
-\begin{itemize}
-  \item Entailment is parametrized along two axis: \textbf{strength} and \textbf{coverage}.
-  \item Strength refers to the materialization-based procedure and is defined by the shape of the domain.
-  \item Coverage refers to the quantification depth of defeasible information.
-\end{itemize}
-$$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
-\end{frame}
-
-\begin{frame}{Typicality Domain in $\ELbot$ and $\ELIbot$}
-
-    {\color{Plum}
-    \large{(\ELbot)} \large{$C \sqsubseteq \exists r.D \Rightarrow (C,D) \in r^{\minrattypp}$}}
-
-\medskip \pause
-
-{\large $\Tmc = \{ A \sqsubseteq \exists r.B, A \sqsubseteq \forall r.C \}$}
-
-\medskip \pause
+  \bigskip
 
   \centering{
   \begin{tikzpicture}
@@ -343,8 +331,6 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
 
     \draw[-latex](A) to (B);
     \draw[-latex](A) to (C);
-
-    \pause
 
     \draw[RedOrange,thick,fill=RedOrange!50,rounded corners] (5.3, 0.5) rectangle (7.3,2.5);
       \node[] at (6.3,2.8) (CCon) {{\color{RedOrange}$C$}};
@@ -367,64 +353,193 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
     %\node[] at (3.5, -1) (text) {\large $C \sqsubseteq \exists r.M$ \textbf{ and } $M$ \text{ is maximal } \wrt $\Kmc, C, r \Rightarrow (C,M) \in r^{\minrattypp}$ };
   \end{tikzpicture}}
 
-  \medskip \pause
+  %\Large{\color{red}INCLUDE DIAGRAM.}
 
-  Concept set contains:
-\begin{enumerate}
-  \item Singletons of named concepts and 
-  \item Combinations of named concepts occurring within quantifiers.
-\end{enumerate}
 \end{frame}
 
-\begin{frame}{Minimal Typicality Model}
+\begin{frame}{Typicality Models -- The Basics}
+  \begin{center}
+    \Large{
+      $\typel{\color{Plum}M}{\color{RedOrange}\Umc}$
+    }
+  \end{center}
 
-  $\dlFont{Human} \sqsubseteq \forall \dlFont{worships}.\dlFont{Powerful}$
-  \medskip
+  {\color{Plum}$M$} is a set of concept names representing $\setconj{M} = \bigsqcap_{A \in M} A$.
+  
+  ${\color{RedOrange}\Umc} \subseteq \Dmc$ is a set of DCIs.
 
+  A typicality interpretation is an interpretation $\Imc = (\Delta^{\Imc}, \cdot^{\Imc})$.
+
+  \medskip \pause
+
+  \textbf{Satisfaction}
+
+  \begin{itemize}
+    \item $\Imc \models C \sqsubseteq D$ iff $C^{\Imc} \subseteq D^{\Imc}$
+    \item $\Imc \models C \definc D$ iff $\typel{C}{\Umc} \in D^{\Imc}$ for maximally typical $\typel{C}{\Umc}$.
+  \end{itemize}
+
+% COMMENT: pure entailment does not interest us. Only 'flavored' (i.e. prop/nest x rat/rel/lex)
+
+\end{frame}
+
+\begin{frame}{Propositional and Nested Entailments}
+\large 
+\begin{itemize}
+  \item Entailment is parametrized along two axis: \textbf{strength} and \textbf{coverage}.
+  \item Strength refers to the materialization-based procedure and is defined by the shape of the domain.
+  \item Coverage refers to the quantificational depth of defeasible information.
+\end{itemize}
+$$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
+\end{frame}
+
+% \begin{frame}{Primeness}
+
+%   {\color{Plum}
+%   \large{(\ELbot)} \large{$C \sqsubseteq \exists r.D \Rightarrow (C,D) \in r^{\Imc^{\Kmc}}$}}
+
+% \medskip \pause
+
+% {\large $\Tmc = \{ A \sqsubseteq \exists r.B, A \sqsubseteq \forall r.C \}$}
+
+% \medskip \pause
+
+%   \centering{
+%   \begin{tikzpicture}
+%     \draw[RedOrange,thick,fill=RedOrange!50,rounded corners] (1.5, 1.5) rectangle (2.5,2.5); %C Concept
+%       \node[] at (2,2.8) (CCon) {{\color{RedOrange}$C$}};
+
+%     \node[] at (0,1) (A) {$A$};
+%     \node[] at (2,0) (B) {$B$};
+%     \node[] at (2,2) (C) {$C$};
+
+%     \draw[-latex](A) to (B);
+%     \draw[-latex](A) to (C);
+
+%     \pause
+
+%     \draw[RedOrange,thick,fill=RedOrange!50,rounded corners] (5.3, 0.5) rectangle (7.3,2.5);
+%       \node[] at (6.3,2.8) (CCon) {{\color{RedOrange}$C$}};
+
+%     \node[] at (4,1) (A2) {$\{A\}$};
+%     \node[] at (6,0) (B2) {$\{B\}$};
+%     \node[] at (6,2) (C2) {$\{C\}$};
+%     \node[] at (6.5,1) (BC) {$\{B,C\}$};
+
+%     \draw[-latex, color=teal](A2) to (BC);
+
+%     \draw[-latex, color=Plum, dashed](A2) to (C2);
+%     \draw[-latex, color=Plum, dashed](A2) to (B2);
+
+%     \node[] at (4.9,1.15) (CCon) {{\footnotesize \color{teal}prime}};
+
+%     \node[] at (4.5,1.8) (CCon) {{\footnotesize \color{Plum}non prime}};
+%     \node[] at (4.5,0.3) (CCon) {{\footnotesize \color{Plum}non prime}};
+
+%     %\node[] at (3.5, -1) (text) {\large $C \sqsubseteq \exists r.M$ \textbf{ and } $M$ \text{ is maximal } \wrt $\Kmc, C, r \Rightarrow (C,M) \in r^{\minrattypp}$ };
+%   \end{tikzpicture}}
+% \end{frame}
+
+%%%
+
+
+% \begin{frame}{Typicality Domain in $\ELbot$ and $\ELIbot$}
+
+%   {\color{Plum}
+%   \large{(\ELbot)} \large{$C \sqsubseteq \exists r.D \Rightarrow (C,D) \in r^{\Imc^{\Kmc}}$}}
+
+% \medskip 
+
+% {\large $\Tmc = \{ A \sqsubseteq \exists r.B, A \sqsubseteq \forall r.C \}$}
+
+% \medskip 
+
+% \centering{
+% \begin{tikzpicture}
+%   \draw[RedOrange,thick,fill=RedOrange!50,rounded corners] (1.5, 1.5) rectangle (2.5,2.5); %C Concept
+%     \node[] at (2,2.8) (CCon) {{\color{RedOrange}$C$}};
+
+%   \node[] at (0,1) (A) {$A$};
+%   \node[] at (2,0) (B) {$B$};
+%   \node[] at (2,2) (C) {$C$};
+
+%   \draw[-latex](A) to (B);
+%   \draw[-latex](A) to (C);
+
+%   \draw[RedOrange,thick,fill=RedOrange!50,rounded corners] (5.3, 0.5) rectangle (7.3,2.5);
+%     \node[] at (6.3,2.8) (CCon) {{\color{RedOrange}$C$}};
+
+%   \node[] at (4,1) (A2) {$\{A\}$};
+%   \node[] at (6,0) (B2) {$\{B\}$};
+%   \node[] at (6,2) (C2) {$\{C\}$};
+%   \node[] at (6.5,1) (BC) {$\{B,C\}$};
+
+%   \draw[-latex, color=teal](A2) to (BC);
+
+%   \draw[-latex, color=Plum, dashed](A2) to (C2);
+%   \draw[-latex, color=Plum, dashed](A2) to (B2);
+
+%   \node[] at (4.9,1.15) (CCon) {{\footnotesize \color{teal}prime}};
+
+%   \node[] at (4.5,1.8) (CCon) {{\footnotesize \color{Plum}non prime}};
+%   \node[] at (4.5,0.3) (CCon) {{\footnotesize \color{Plum}non prime}};
+
+%   %\node[] at (3.5, -1) (text) {\large $C \sqsubseteq \exists r.M$ \textbf{ and } $M$ \text{ is maximal } \wrt $\Kmc, C, r \Rightarrow (C,M) \in r^{\minrattypp}$ };
+% \end{tikzpicture}}
+
+% \medskip 
+
+% Concept set contains:
+% \begin{enumerate}
+% \item Singletons of named concepts and 
+% \item Combinations of named concepts occurring within quantifiers.
+% \end{enumerate}
+
+% \end{frame}
+
+%%%
+
+\begin{frame}{Rational Domain}
+  
   \centering{
-  \begin{tikzpicture}
-    %\draw[dashed] (1, 3) rectangle (5, 0.3);
+    \begin{tikzpicture}
+      %\draw[dashed] (1, 3) rectangle (5, 0.3);
+  
+      %\draw[dashed, teal, rounded corners] (0.9, 3) -- (2.1, 3) -- (2.1,2.3) -- (2.1, 1) -- (4.9, 1) -- (4.9, 0.2) -- (0.9, 0.2) -- cycle;
+  
+      \draw[dashed, rounded corners] (0.9, 3) -- (5, 3) -- (5, 0.2) -- (0.9, 0.2) -- cycle;
 
-    \draw[dashed, teal, rounded corners] (0.9, 3) -- (2.1, 3) -- (2.1,2.3) -- (2.1, 1) -- (4.9, 1) -- (4.9, 0.2) -- (0.9, 0.2) -- cycle;
-
-    \node[color=black!40] at (0, 1.3){$\dlFont{Being}$};
-    \node[color=black!40] at (0, 2.7){$\dlFont{Human}$};
-    \node[color=black!40] at (-0.55, 2){$\dlFont{Deity}, \dlFont{Powerful}$};
-    \node[color=teal] at (0, 0.6){$\dlFont{Mortal}$};
-
-    \node[color=black!40] at (1.5,3.3){$\Emc_0$};
-    \node[color=black!40] at (3,3.3){$\Emc_1$};
-    \node[color=black!40] at (4.5,3.3){$\emptyset$};
-    
-    \node[Plum] at (3,1.3){$\typel{\dlFont{D}}{\Emc_{1}}$};
-    \node[] at (4.5,1.3){$\typel{\dlFont{D}}{\emptyset}$};
-
-    \node[Plum] (H2) at (1.5, 2.7){$\typel{\dlFont{H}}{\Emc_{0}}$};
-    \node[] (H1) at (3, 2.7){$\typel{\dlFont{H}}{\Emc_{1}}$};
-    \node[] (H0) at (4.5, 2.7){$\typel{\dlFont{H}}{\emptyset}$};
-
-    %\node[Plum] at (1.5,2){$\typel{\dlFont{D,P}}{\Emc_{0}}$};
-    \node[Plum] (DP1) at (3,2){$\typel{\dlFont{D},\!\dlFont{P}}{\Emc_{1}}$};
-    \node[] (DP0) at (4.5,2){$\typel{\dlFont{D},\!\dlFont{P}}{\emptyset}$};
-
-    \node[Plum] at (1.5,0.6){$\typel{\dlFont{M}}{\Emc_{0}}$};
-    \node[] at (3,0.6){$\typel{\dlFont{M}}{\Emc_{1}}$};
-    \node[] at (4.5,0.6){$\typel{\dlFont{M}}{\emptyset}$};
-
-    %\draw[-latex] (H0) -- (5.5, 2.35) -- (DP0);
-    %\draw[-latex] (H1) -- (DP0);
-    \draw[-latex] (H2) -- (DP0);
-
-    \node[] at (0.3,3.4){$\footnotesize \ratDom$};
-\end{tikzpicture} 
-  }
-
-\bigskip 
-
-\begin{enumerate}
-  \item $\typel{M}{\Umc} \in A^{\Mintypmod}$ iff $\materialization{\Kmc} \models \setconj{M} \sqcap \materialization{\Umc} \sqsubseteq A$
-  \item $(\typel{M}{\Umc}, \typel{N}{\Vmc}) \in r^{\Mintypmod}$ iff $\materialization{\Kmc} \models \setconj{M} \sqcap \materialization{\Umc} \sqsubseteq \exists r.\setconj{N}$ and $N$ is prime.
-\end{enumerate}
+      \node[color=black!40] at (0, 1.3){$\dlFont{Being}$};
+      \node[color=black!40] at (0, 2.7){$\dlFont{Human}$};
+      \node[color=black!40] at (-0.55, 2){$\dlFont{Deity}, \dlFont{Powerful}$};
+      \node[color=black!40] at (0, 0.6){$\dlFont{Mortal}$};
+  
+      \node[color=black!40] at (1.5,3.3){$\Emc_0$};
+      \node[color=black!40] at (3,3.3){$\Emc_1$};
+      \node[color=black!40] at (4.5,3.3){$\emptyset$};
+      
+      \node[Plum] at (3,1.3){$\typel{\dlFont{D}}{\Emc_{1}}$};
+      \node[] at (4.5,1.3){$\typel{\dlFont{D}}{\emptyset}$};
+  
+      \node[Plum] (H2) at (1.5, 2.7){$\typel{\dlFont{H}}{\Emc_{0}}$};
+      \node[] (H1) at (3, 2.7){$\typel{\dlFont{H}}{\Emc_{1}}$};
+      \node[] (H0) at (4.5, 2.7){$\typel{\dlFont{H}}{\emptyset}$};
+  
+      %\node[Plum] at (1.5,2){$\typel{\dlFont{D,P}}{\Emc_{0}}$};
+      \node[Plum] (DP1) at (3,2){$\typel{\dlFont{D},\!\dlFont{P}}{\Emc_{1}}$};
+      \node[] (DP0) at (4.5,2){$\typel{\dlFont{D},\!\dlFont{P}}{\emptyset}$};
+  
+      \node[Plum] at (1.5,0.6){$\typel{\dlFont{M}}{\Emc_{0}}$};
+      \node[] at (3,0.6){$\typel{\dlFont{M}}{\Emc_{1}}$};
+      \node[] at (4.5,0.6){$\typel{\dlFont{M}}{\emptyset}$};
+  
+      %\draw[-latex] (H0) -- (5.5, 2.35) -- (DP0);
+      %\draw[-latex] (H1) -- (DP0);
+      %\draw[-latex] (H2) -- (DP0);
+  
+      \node[] at (0.3,3.4){$\footnotesize \ratDom$};
+  \end{tikzpicture} 
+    }
 
 \end{frame}
 
@@ -481,6 +596,59 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
 
 \end{frame}
 
+\begin{frame}{Minimal Typicality Model}
+
+  $\dlFont{Human} \sqsubseteq \forall \dlFont{worships}.\dlFont{Powerful}$
+  \medskip
+
+  \centering{
+  \begin{tikzpicture}
+    %\draw[dashed] (1, 3) rectangle (5, 0.3);
+
+    \draw[dashed, teal, rounded corners] (0.9, 3) -- (2.1, 3) -- (2.1,2.3) -- (2.1, 1) -- (4.9, 1) -- (4.9, 0.2) -- (0.9, 0.2) -- cycle;
+
+    \node[color=black!40] at (0, 1.3){$\dlFont{Being}$};
+    \node[color=black!40] at (0, 2.7){$\dlFont{Human}$};
+    \node[color=black!40] at (-0.55, 2){$\dlFont{Deity}, \dlFont{Powerful}$};
+    \node[color=teal] at (0, 0.6){$\dlFont{Mortal}$};
+
+    \node[color=black!40] at (1.5,3.3){$\Emc_0$};
+    \node[color=black!40] at (3,3.3){$\Emc_1$};
+    \node[color=black!40] at (4.5,3.3){$\emptyset$};
+    
+    \node[Plum] at (3,1.3){$\typel{\dlFont{D}}{\Emc_{1}}$};
+    \node[] at (4.5,1.3){$\typel{\dlFont{D}}{\emptyset}$};
+
+    \node[Plum] (H2) at (1.5, 2.7){$\typel{\dlFont{H}}{\Emc_{0}}$};
+    \node[] (H1) at (3, 2.7){$\typel{\dlFont{H}}{\Emc_{1}}$};
+    \node[] (H0) at (4.5, 2.7){$\typel{\dlFont{H}}{\emptyset}$};
+
+    %\node[Plum] at (1.5,2){$\typel{\dlFont{D,P}}{\Emc_{0}}$};
+    \node[Plum] (DP1) at (3,2){$\typel{\dlFont{D},\!\dlFont{P}}{\Emc_{1}}$};
+    \node[] (DP0) at (4.5,2){$\typel{\dlFont{D},\!\dlFont{P}}{\emptyset}$};
+
+    \node[Plum] at (1.5,0.6){$\typel{\dlFont{M}}{\Emc_{0}}$};
+    \node[] at (3,0.6){$\typel{\dlFont{M}}{\Emc_{1}}$};
+    \node[] at (4.5,0.6){$\typel{\dlFont{M}}{\emptyset}$};
+
+    %\draw[-latex] (H0) -- (5.5, 2.35) -- (DP0);
+    %\draw[-latex] (H1) -- (DP0);
+    \draw[-latex] (H2) -- (DP0);
+
+    \node[] at (0.3,3.4){$\footnotesize \ratDom$};
+\end{tikzpicture} 
+  }
+
+\bigskip 
+
+\begin{enumerate}
+  \item $\typel{M}{\Umc} \in A^{\Mintypmod}$ iff $\materialization{\Kmc} \models \setconj{M} \sqcap \materialization{\Umc} \sqsubseteq A$
+  \item $(\typel{M}{\Umc}, \typel{N}{\emptyset}) \in r^{\Mintypmod}$ iff $\materialization{\Kmc} \models \setconj{M} \sqcap \materialization{\Umc} \sqsubseteq \exists r.\setconj{N}$ and $N$ is prime.
+  \item $(\typel{N}{\emptyset}, \typel{M}{\Umc}) \in r^{\Mintypmod}$ iff $\materialization{\Kmc} \models \setconj{M} \sqcap \materialization{\Umc} \sqsubseteq \exists r^{-}.\setconj{N}$ and $N$ is prime. 
+\end{enumerate}
+
+\end{frame}
+
 \begin{frame}{Propositional Reasoning}
 
 \begin{itemize}
@@ -533,13 +701,13 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
 
   \medskip 
 
-  \begin{columns}[t,onlytextwidth]
+  \begin{columns}
 
-    \column{.5\textwidth} 
+    \column{.6\textwidth} 
   {\footnotesize
   \begin{itemize}
-    \item $\Kmc \models \dlFont{Human} \definc \exists \dlFont{worships}.\dlFont{Powerful}$
-    \item $\Kmc \models \dlFont{Human} \definc \dlFont{Mortal}$
+    \item $\Kmc \propratModels \dlFont{Human} \definc \exists \dlFont{worships}.\dlFont{Powerful}$
+    \item $\Kmc \propratModels \dlFont{Human} \definc \dlFont{Mortal}$
   \end{itemize}
   }
 \pause
@@ -675,15 +843,15 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
 
     \node[] at (0.9,3) (ruleE) {$\recruleExis$};
     %\node[] at (0.85,2) (N) {$C \sqsubseteq \forall r^{-}D$};
-    \node[] at (1,1.7) (N) {$\exists r.C \sqsubseteq \exists s.E$};
+    \node[] at (1,1.7) (N) {$\exists r.C \sqsubseteq \exists r.E$};
 
     \draw[-latex](Ai) to (Bk);
 
 \pause 
 
   % Fix #1
-  \draw[RedOrange,thick,fill=RedOrange!30,rounded corners] (-0.5, -0.5) rectangle (0.5,0.5); %D Concept
-    \node[] at (0,0.8) (DCon) {{\color{RedOrange}$D$}};
+  %\draw[RedOrange,thick,fill=RedOrange!30,rounded corners] (-0.5, -0.5) rectangle (0.5,0.5); %D Concept
+    %\node[] at (0,0.8) (DCon) {{\color{RedOrange}$D$}};
   \node[] at (0,0) (Mi) {$\typel{M}{\Emc_i}$};
 
   \node[] at (2,-1.5) (E) {$\typel{E}{\emptyset}$};
@@ -733,7 +901,7 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
   \node[] at (9,1.7) (N) {$D \sqsubseteq \forall r.E$};
   
   %%%%%%%%%%%%%%%% 3 %%%%%%%%%%%%%%%%%
-  \pause 
+  
 
   \draw[RedOrange,thick,fill=RedOrange!30,rounded corners] (7.5, -0.5) rectangle (8.5,0.5); %D Concept
     \node[] at (8,0.8) (DCon3) {{\color{RedOrange}$D$}};
@@ -825,54 +993,54 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
   
 \end{frame}
 
-\begin{frame}{Termination Argument}
-  \centering{
-    \begin{tikzpicture}
-    %%% Headers 
-    \node[] at (2,4) (A) {Update};
-    \node[] at (8,4) (A) {Model recovery};
+% \begin{frame}{Termination Argument}
+%   \centering{
+%     \begin{tikzpicture}
+%     %%% Headers 
+%     \node[] at (2,4) (A) {Update};
+%     \node[] at (8,4) (A) {Model recovery};
 
-    %%% Interpretations
+%     %%% Interpretations
 
-    % 1
-    \node[] at (0,0) (root) {$\typel{M}{\Umc}$};
-    \node[] at (2,0) (A) {$\{A\}$};
-    \node[] at (2,1) (AB) {$\{A, B\}$};
-    \node[] at (2,2) (vdots) {$\vdots$};
-    \node[] at (2,3) (SigC) {$\sigC{\Kmc}$};
+%     % 1
+%     \node[] at (0,0) (root) {$\typel{M}{\Umc}$};
+%     \node[] at (2,0) (A) {$\{A\}$};
+%     \node[] at (2,1) (AB) {$\{A, B\}$};
+%     \node[] at (2,2) (vdots) {$\vdots$};
+%     \node[] at (2,3) (SigC) {$\sigC{\Kmc}$};
 
-    \node[] at (4,3) (D) {$\Dmc$};
-    \node[] at (4,2) (vdots2) {$\vdots$};
-    \node[] at (4,1) (U1) {$\{\Umc_1\}$};
-    \node[] at (4,0) (ES) {$\{\emptyset\}$};
+%     \node[] at (4,3) (D) {$\Dmc$};
+%     \node[] at (4,2) (vdots2) {$\vdots$};
+%     \node[] at (4,1) (U1) {$\{\Umc_1\}$};
+%     \node[] at (4,0) (ES) {$\{\emptyset\}$};
 
-    \node at (1, -0.2) (r1) {$r$};
-    \draw [-latex](root) to (A);
-    \draw [-](A) to (ES);
-    \draw [-, dashed, color=RedOrange](A) to (U1);
+%     \node at (1, -0.2) (r1) {$r$};
+%     \draw [-latex](root) to (A);
+%     \draw [-](A) to (ES);
+%     \draw [-, dashed, color=RedOrange](A) to (U1);
 
-    % 2
-    \node[] at (6,0) (root) {$\typel{M}{\Umc}$};
-    \node[] at (8,0) (A) {$\{A\}$};
-    \node[] at (8,1) (AB) {$\{A, B\}$};
-    \node[] at (8,2) (vdots) {$\vdots$};
-    \node[] at (8,3) (SigC) {$\sigC{\Kmc}$};
+%     % 2
+%     \node[] at (6,0) (root) {$\typel{M}{\Umc}$};
+%     \node[] at (8,0) (A) {$\{A\}$};
+%     \node[] at (8,1) (AB) {$\{A, B\}$};
+%     \node[] at (8,2) (vdots) {$\vdots$};
+%     \node[] at (8,3) (SigC) {$\sigC{\Kmc}$};
     
-    \node[] at (10,3) (D) {$\Dmc$};
-    \node[] at (10,2) (vdots2) {$\vdots$};
-    \node[] at (10,1) (U1) {$\{\Umc_1\}$};
-    \node[] at (10,0) (ES) {$\{\emptyset\}$};
+%     \node[] at (10,3) (D) {$\Dmc$};
+%     \node[] at (10,2) (vdots2) {$\vdots$};
+%     \node[] at (10,1) (U1) {$\{\Umc_1\}$};
+%     \node[] at (10,0) (ES) {$\{\emptyset\}$};
     
-    \node at (7, -0.3) (r1) {$r$};
-    \draw [-latex, dashed](root) to (A);
-      \node at (6.86,0) (no) {\large\color{red}$x$};
-    \draw [-latex, dashed, RedOrange](root) to (AB);
-    \draw [-](AB) to (ES);
-    \draw [-](AB) to (U1);
+%     \node at (7, -0.3) (r1) {$r$};
+%     \draw [-latex, dashed](root) to (A);
+%       \node at (6.86,0) (no) {\large\color{red}$x$};
+%     \draw [-latex, dashed, RedOrange](root) to (AB);
+%     \draw [-](AB) to (ES);
+%     \draw [-](AB) to (U1);
 
-    \end{tikzpicture}
-}
-\end{frame}
+%     \end{tikzpicture}
+% }
+% \end{frame}
 
 \begin{frame}{Nested Reasoning}
   \centering{
@@ -911,17 +1079,20 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
   
       \node[black!40] at (0.3,3.4){$\footnotesize \ratDom$};
 
+      \pause
+
       \draw[-latex, RedOrange] (H2) -- (2,2) -- (DP1);
 
   \end{tikzpicture} 
     }
 
-  \bigskip \pause
+  %\bigskip 
+  %$\Kmc \models \dlFont{Human} \definc \exists \dlFont{worships}.\dlFont{Anthropomorphic}$
 
-    \begin{itemize}
-      \item $\Kmc \models \dlFont{Human} \definc \exists \dlFont{worships}.\dlFont{Anthropomorphic}$ \pause
-      \item $\Kmc \not\models \dlFont{Deity} \definc \dlFont{Corporeal}$ (Inheritance Blocking)
-    \end{itemize}
+    % \begin{itemize}
+    %   \item $\Kmc \models \dlFont{Human} \definc \exists \dlFont{worships}.\dlFont{Anthropomorphic}$ \pause
+    %   %\item $\Kmc \not\models \dlFont{Deity} \definc \dlFont{Corporeal}$ (Inheritance Blocking)
+    % \end{itemize}
 
 \end{frame}
 

@@ -316,3 +316,9 @@
 \newcommand{\modrec}[3][\Kmc]{ \ensuremath{\mathsf{ModRec_{#1}}({#2}, {#3})}} % Set of model recoveries. 1. DKB; 2. Typicality Interpretation; 3. Initiator labeling.
 
 \newcommand{\stcand}[2]{\ensuremath{\mathsf{UpCan}_{r}}({#1}, {#2})} %Strengthening candidate. 1. Interpretation; 2. Edge table.
+
+% Typicality-models propositional entailment
+\newcommand{\propModels}[1][\strength]{\ensuremath{\models_{\mathsf{prop}, {#1}}}}
+\newcommand{\propratModels}{\propModels[\ratS]}
+\newcommand{\proprelModels}{\propModels[\relS]}
+\newcommand{\proplexModels}{\propModels[\lexS]}
