@@ -123,6 +123,8 @@
 
 \begin{frame}[fragile]{Motivation}
   \includegraphics[scale=.33]{img/familyres.png}
+
+  {\scriptsize BECKER, L. \url{https://laurabecker.gitlab.io}}
 \end{frame}
 
 % Speak: the idea is to incorporate prototype reasoning through defeasible reasoning.
@@ -370,14 +372,16 @@ for some $\Umc \subseteq \Dmc$ \medskip
 
   A typicality interpretation is an interpretation $\Imc = (\Delta^{\Imc}, \cdot^{\Imc})$.
 
-  \medskip \pause
+  \bigskip \pause
 
-  \textbf{Satisfaction}
+  \textbf{Defeasible Satisfaction}
 
-  \begin{itemize}
-    \item $\Imc \models C \sqsubseteq D$ iff $C^{\Imc} \subseteq D^{\Imc}$
-    \item $\Imc \models C \definc D$ iff $\typel{C}{\Umc} \in D^{\Imc}$ for maximally typical $\typel{C}{\Umc}$.
-  \end{itemize}
+  $\Imc \models C \definc D$ iff $\typel{C}{\Umc} \in D^{\Imc}$ for maximally typical $\typel{C}{\Umc}$
+
+  % \begin{itemize}
+  %   \item $\Imc \models C \sqsubseteq D$ iff $C^{\Imc} \subseteq D^{\Imc}$
+  %   \item $\Imc \models C \definc D$ iff $\typel{C}{\Umc} \in D^{\Imc}$ for maximally typical $\typel{C}{\Umc}$.
+  % \end{itemize}
 
 % COMMENT: pure entailment does not interest us. Only 'flavored' (i.e. prop/nest x rat/rel/lex)
 
@@ -509,7 +513,7 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
   
       \draw[dashed, rounded corners] (0.9, 3) -- (5, 3) -- (5, 0.2) -- (0.9, 0.2) -- cycle;
 
-      \node[color=black!40] at (0, 1.3){$\dlFont{Being}$};
+      \node[color=black!40] at (0, 1.3){$\dlFont{Deity}$};
       \node[color=black!40] at (0, 2.7){$\dlFont{Human}$};
       \node[color=black!40] at (-0.55, 2){$\dlFont{Deity}, \dlFont{Powerful}$};
       \node[color=black!40] at (0, 0.6){$\dlFont{Mortal}$};
@@ -607,7 +611,7 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
 
     \draw[dashed, teal, rounded corners] (0.9, 3) -- (2.1, 3) -- (2.1,2.3) -- (2.1, 1) -- (4.9, 1) -- (4.9, 0.2) -- (0.9, 0.2) -- cycle;
 
-    \node[color=black!40] at (0, 1.3){$\dlFont{Being}$};
+    \node[color=black!40] at (0, 1.3){$\dlFont{Deity}$};
     \node[color=black!40] at (0, 2.7){$\dlFont{Human}$};
     \node[color=black!40] at (-0.55, 2){$\dlFont{Deity}, \dlFont{Powerful}$};
     \node[color=teal] at (0, 0.6){$\dlFont{Mortal}$};
@@ -667,7 +671,7 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
 
     \draw[dashed, teal, rounded corners] (0.9, 3) -- (2.1, 3) -- (2.1,2.3) -- (2.1, 1) -- (4.9, 1) -- (4.9, 0.2) -- (0.9, 0.2) -- cycle;
 
-    \node[color=black!40] at (0, 1.3){$\dlFont{Being}$};
+    \node[color=black!40] at (0, 1.3){$\dlFont{Deity}$};
     \node[color=black!40] at (0, 2.7){$\dlFont{Human}$};
     \node[color=black!40] at (-0.55, 2){$\dlFont{Deity}, \dlFont{Powerful}$};
     \node[color=teal] at (0, 0.6){$\dlFont{Mortal}$};
@@ -730,7 +734,7 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
   
       \draw[dashed, black!40, rounded corners] (0.9, 3) -- (2.1, 3) -- (2.1,2.3) -- (2.1, 1) -- (4.9, 1) -- (4.9, 0.2) -- (0.9, 0.2) -- cycle;
   
-      \node[color=black!40] at (0, 1.3){$\dlFont{Being}$};
+      \node[color=black!40] at (0, 1.3){$\dlFont{Deity}$};
       \node[color=black!40] at (0, 2.7){$\dlFont{Human}$};
       \node[color=black!40] at (-0.55, 2){$\dlFont{Deity}, \dlFont{Powerful}$};
       \node[color=black!40] at (0, 0.6){$\dlFont{Mortal}$};
@@ -771,7 +775,7 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
 \end{frame} 
 
 \begin{frame}{Nested Reasoning -- Outline}
-  \large The road to nested reasoning
+  \large The road to nested reasoning:
   \begin{enumerate}
     \item Upgrade edges to more typical successors.
     \item Recover the model property meaningfully.
@@ -806,7 +810,7 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
       %\node[] at (4.9,-0.2) (pred) {$p$};
 
     %%% 3 %%%
-      \pause 
+      %\pause 
 
     \node[] at (8.8,2.1) (N) {$\setconj{N} \sqcap \materialization{\Emc_k} \sqsubseteq \exists r^{-}.\setconj{M}$};
 
@@ -912,18 +916,125 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
     
     \node[] at (8,0) (Mi2) {$\typel{M}{\Emc_i}$};
     \node[] at (10,0) (Nk2) {$\typel{N}{\Emc_k}$};
-    \node[teal, rounded rectangle, fill=teal!30, draw] at (9,-1.5) (Nk2) {\color{black!80}$\typel{N \cup \{E\}}{\Emc_k}$};
-    \node[] at (8.7,-.7) (su) {$\mathsf{p}$};
+    %\node[teal, rounded rectangle, fill=teal!30, draw] at (9,-1.5) (Nk2) {\color{black!80}$\typel{N \cup \{E\}}{\Emc_k}$};
+    \node[] at (9,.2) (su) {$\mathsf{p}$};
 
-    \draw[-latex](Mi2) to (Nk2);
+    \draw[-latex](Mi2) to (Nk2); 
+    
+    %\pause 
+
+    % \node[teal, rounded rectangle, fill=teal!30, draw] at (9,-1.5) (Nk2) {\color{black!80}$\typel{N \cup \{E\}}{\Emc_k}$};
+    % \draw[-latex](Mi2) to (Nk2);
 
   % Fix #3
+
+  
+
   \node[] at (9,-2.5) (N) {\footnotesize\text{Swap $r$ edges to include $E$}};
   %\node[] at (8.8,1.5) (N) {\text{Move $r$ edges to include $E$}};
 
   \end{tikzpicture}
 
 \end{frame} 
+
+
+\begin{frame}{Upgrading \& Fixing}
+  %$$A \sqsubseteq B \mid A_1 \sqcap A_2 \sqsubseteq B \mid A \sqsubseteq \exists r.B \mid A \sqsubseteq \forall r.B$$
+  
+  \begin{tikzpicture}
+  
+  
+    \draw[RedOrange,thick,fill=RedOrange!30,rounded corners] (1.5, -0.5) rectangle (2.5,0.5); %C Concept
+      \node[] at (2,0.8) (CCon) {{\color{RedOrange}$C$}};
+  
+      \node[] at (0,0) (Ai) {$\typel{M}{\Emc_i}$};
+      \node[] at (2,0) (Bk) {$\typel{N}{\Emc_k}$};
+  
+      \node[] at (0.9,3) (ruleE) {$\recruleExis$};
+      %\node[] at (0.85,2) (N) {$C \sqsubseteq \forall r^{-}D$};
+      \node[] at (1,1.7) (N) {$\exists r.C \sqsubseteq \exists r.E$};
+  
+      \draw[-latex](Ai) to (Bk);
+  
+  
+    % Fix #1
+    %\draw[RedOrange,thick,fill=RedOrange!30,rounded corners] (-0.5, -0.5) rectangle (0.5,0.5); %D Concept
+      %\node[] at (0,0.8) (DCon) {{\color{RedOrange}$D$}};
+    \node[] at (0,0) (Mi) {$\typel{M}{\Emc_i}$};
+  
+    \node[] at (2,-1.5) (E) {$\typel{E}{\emptyset}$};
+    
+    \draw[-latex](Ai) to (E);
+  
+    %\node[] at (1,-2.5) (N) {\text{Add \typel{M}{\Emc_i} to $D$}};
+    %\node[] at (1,-3) (N) {\text{Add edge landing on \typel{E}{\emptyset}}};
+    \node[] at (1,-2.5) (N) {\footnotesize\text{Add edge landing on \typel{E}{\emptyset}}};
+    
+    %%%%%%%%%%%%%%%% 2 %%%%%%%%%%%%%%%%%
+
+  
+    \draw[RedOrange,thick,fill=RedOrange!30,rounded corners] (3.5, -0.5) rectangle (4.5,0.5); %D Concept
+      \node[] at (4,0.8) (DCon) {{\color{RedOrange}$D$}};
+  
+    \draw[RedOrange,thick,fill=RedOrange!30,rounded corners] (5.5, -0.5) rectangle (6.5,0.5); %C Concept
+      \node[] at (6,0.8) (CCon) {{\color{RedOrange}$C$}};
+  
+      \node[] at (4,0) (Mi) {$\typel{M}{\Emc_i}$};
+      \node[] at (6,0) (Nk) {$\typel{N}{\Emc_k}$};
+      \node[] at (4.9,0.2) (su) {$\mathsf{s}$};
+  
+  
+      \node[] at (4.9,3) (ruleV1) {$\recruleForaC$};
+      %\node[] at (5,2) (N) {$C \sqsubseteq \forall r^{-}D$};
+      \node[] at (5,1.7) (N) {$D \sqsubseteq \forall r.E$};
+  
+      \draw[-latex](Mi) to (Nk);
+  
+
+  
+    % Fix #2
+    \node[] at (5,-2.5) (N) {\footnotesize\text{Add $r$ successors to $E$}};
+  
+    \draw[teal,thick,fill=teal!30,rounded corners] (5.4, -1) rectangle (6.6,1); %E Concept
+      \node[] at (6,0.8) (CCon2) {{\color{RedOrange}$C$}};
+      \node[] at (6,-1.3) (CCon2) {{\color{teal}$E$}};
+  
+    \draw[RedOrange,thick,fill=RedOrange!30,rounded corners] (5.5, -0.5) rectangle (6.5,0.5); %C Concept
+  
+    \node[] at (6,0) (Nk) {$\typel{N}{\Emc_k}$};
+    \draw[-latex](Mi) to (Nk);
+  
+    \node[] at (8.9,3) (ruleV1) {$\recruleForaR$};
+    %\node[] at (9,2) (N) {$C \sqsubseteq \forall r^{-}D$};
+    \node[] at (9,1.7) (N) {$D \sqsubseteq \forall r.E$};
+    
+    %%%%%%%%%%%%%%%% 3 %%%%%%%%%%%%%%%%%
+ 
+  
+    \draw[RedOrange,thick,fill=RedOrange!30,rounded corners] (7.5, -0.5) rectangle (8.5,0.5); %D Concept
+      \node[] at (8,0.8) (DCon3) {{\color{RedOrange}$D$}};
+  
+    \draw[RedOrange,thick,fill=RedOrange!30,rounded corners] (9.5, -0.5) rectangle (10.5,0.5); %C Concept
+      \node[] at (10,0.8) (CCon3) {{\color{RedOrange}$C$}};
+  
+      
+      \node[] at (8,0) (Mi2) {$\typel{M}{\Emc_i}$};
+      \node[] at (10,0) (Nk2) {$\typel{N}{\Emc_k}$};
+      \node[teal, rounded rectangle, fill=teal!30, draw] at (9,-1.5) (Nk2) {\color{black!80}$\typel{N \cup \{E\}}{\Emc_k}$};
+      \node[] at (8.7,-.7) (su) {$\mathsf{p}$};
+  
+      \draw[-latex](Mi2) to (Nk2);
+  
+    % Fix #3
+  
+    
+  
+    \node[] at (9,-2.5) (N) {\footnotesize\text{Swap $r$ edges to include $E$}};
+    %\node[] at (8.8,1.5) (N) {\text{Move $r$ edges to include $E$}};
+  
+    \end{tikzpicture}
+  
+  \end{frame} 
 
 \begin{frame}{Full upgrade procedure}
   \centering{
@@ -1049,7 +1160,7 @@ $$\{\ratS, \relS, \lexS\} \times \{\propCov, \nestCov\}$$
   
       \draw[dashed, black!40, rounded corners] (0.9, 3) -- (2.1, 3) -- (2.1,2.3) -- (2.1, 1) -- (4.9, 1) -- (4.9, 0.2) -- (0.9, 0.2) -- cycle;
   
-      \node[color=black!40] at (0, 1.3){$\dlFont{Being}$};
+      \node[color=black!40] at (0, 1.3){$\dlFont{Deity}$};
       \node[color=black!40] at (0, 2.7){$\dlFont{Human}$};
       \node[color=black!40] at (-0.55, 2){$\dlFont{Deity}, \dlFont{Powerful}$};
       \node[color=black!40] at (0, 0.6){$\dlFont{Mortal}$};
